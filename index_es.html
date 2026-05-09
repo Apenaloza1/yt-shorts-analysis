@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El blind spot de YouTube — Análisis competitivo | Trafilea</title>
+<style>
+:root {
+  --navy: #0A2540;
+  --navy-soft: #1E3A5F;
+  --ink: #0A2540;
+  --slate: #5A6A7E;
+  --line: #E5E9EE;
+  --bg: #FAFAFA;
+  --card: #FFFFFF;
+  --accent: #FF5A36;
+  --accent-soft: #FFE6DC;
+  --green: #2A9D8F;
+  --p1: #264653;
+  --p2: #2A9D8F;
+  --p3: #E9C46A;
+  --p4: #F4A261;
+  --shadow: 0 1px 3px rgba(10,37,64,0.06), 0 4px 12px rgba(10,37,64,0.04);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px; line-height: 1.55; color: var(--ink); background: var(--bg);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+/* TOPBAR */
+header.topbar {
+  background: var(--navy); color: white; padding: 14px 0;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; }
+.brand { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+.brand .accent { color: var(--accent); }
+nav ul { list-style: none; display: flex; gap: 22px; }
+nav a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
+nav a:hover { color: white; }
+
+/* HERO */
+.hero {
+  background: var(--navy); color: white;
+  padding: 96px 0 80px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero .eyebrow {
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600; margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: 56px; line-height: 1.05; font-weight: 600;
+  letter-spacing: -0.025em; margin-bottom: 24px; max-width: 960px;
+}
+.hero h1 .accent { color: var(--accent); font-style: italic; font-weight: 500; }
+.hero p.subtitle {
+  font-size: 19px; color: rgba(255,255,255,0.72);
+  max-width: 780px; margin-bottom: 40px; font-weight: 300;
+}
+.hero .meta {
+  display: flex; gap: 28px; align-items: center;
+  font-size: 12px; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.hero .meta strong { color: var(--accent); font-weight: 500; }
+
+/* SECTION */
+section.s { padding: 80px 0; border-bottom: 1px solid var(--line); }
+section.s.alt { background: var(--card); }
+section.s.dark { background: var(--navy); color: white; }
+.s-head {
+  margin-bottom: 48px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+section.s.dark .s-head { border-bottom-color: rgba(255,255,255,0.1); }
+.act-num {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--accent); margin-bottom: 10px;
+}
+.s-title {
+  font-size: 38px; font-weight: 600; letter-spacing: -0.022em;
+  color: var(--ink); line-height: 1.15;
+}
+section.s.dark .s-title { color: white; }
+.s-subtitle {
+  font-size: 18px; color: var(--slate);
+  margin-top: 14px; max-width: 820px; font-weight: 400; line-height: 1.55;
+}
+section.s.dark .s-subtitle { color: rgba(255,255,255,0.7); }
+
+/* ACTO 1 — DIAGNOSTICO */
+.diag-callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px; margin-bottom: 32px;
+  border-radius: 2px;
+}
+.diag-callout .lbl {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 6px;
+}
+.diag-callout p { font-size: 16px; color: var(--ink); line-height: 1.5; }
+.diag-callout p strong { font-weight: 600; }
+
+table.diag-table {
+  width: 100%; border-collapse: collapse; margin: 24px 0;
+  background: white; box-shadow: var(--shadow);
+}
+table.diag-table th, table.diag-table td {
+  padding: 16px 18px; text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.diag-table th {
+  background: var(--navy); color: white;
+  font-weight: 600; font-size: 13px;
+  letter-spacing: 0.04em;
+}
+table.diag-table th:last-child { text-align: center; }
+table.diag-table td { font-size: 14px; line-height: 1.5; color: var(--ink); }
+table.diag-table td.dim { font-weight: 600; color: var(--ink); width: 18%; }
+table.diag-table td.winner { text-align: center; font-weight: 600; width: 14%; }
+table.diag-table td.winner.supplements { color: var(--p2); }
+table.diag-table td.winner.apparel { color: var(--accent); background: var(--accent-soft); }
+table.diag-table tr.storytelling-row { background: #FFF8F4; }
+table.diag-table tr.storytelling-row td { font-weight: 500; }
+
+.scoreboard {
+  display: inline-grid; grid-template-columns: 1fr auto 1fr;
+  gap: 0; margin: 20px 0;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 4px; overflow: hidden; max-width: 560px;
+}
+.scoreboard .side { padding: 14px 22px; text-align: center; color: var(--ink); }
+.scoreboard .side.lose .label, .scoreboard .side.win .label {
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 4px; color: var(--slate); font-weight: 600;
+}
+.scoreboard .side.lose .score, .scoreboard .side.win .score {
+  font-size: 26px; font-weight: 600; line-height: 1;
+  letter-spacing: -0.02em;
+}
+.scoreboard .side.win .score { color: var(--accent); }
+.scoreboard .side.lose .score { color: var(--slate); }
+.scoreboard .side .desc { font-size: 11px; margin-top: 4px; color: var(--slate); }
+.scoreboard .vs {
+  align-self: center;
+  font-size: 11px; color: var(--slate);
+  letter-spacing: 0.12em; padding: 0 8px;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  background: var(--bg);
+  display: flex; align-items: center; padding: 14px 12px;
+}
+
+.reading {
+  background: var(--card);
+  border-left: 3px solid var(--ink);
+  padding: 24px 28px; margin-top: 24px;
+}
+.reading .lbl {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink); margin-bottom: 8px;
+}
+.reading p { color: var(--ink); font-size: 16px; line-height: 1.6; }
+.reading p strong { color: var(--ink); font-weight: 600; }
+
+/* ACTO 2 — INSIGHT */
+.platform-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(255,255,255,0.1);
+  margin: 32px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.platform-card {
+  background: var(--navy);
+  padding: 32px 28px;
+}
+.platform-card .name {
+  font-size: 14px; font-weight: 600; color: var(--accent);
+  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px;
+}
+.platform-card .mode {
+  font-size: 22px; font-weight: 500; color: white;
+  margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.platform-card .want {
+  font-size: 14px; color: rgba(255,255,255,0.65);
+  font-style: italic;
+}
+.platform-card.youtube { border: 2px solid var(--accent); padding: 30px 26px; }
+.platform-card.youtube .mode { color: var(--accent); font-weight: 600; }
+
+.quote-block {
+  background: white; padding: 24px 28px;
+  border-left: 3px solid var(--accent);
+  margin: 20px 0; border-radius: 2px;
+  box-shadow: var(--shadow);
+}
+.quote-block .text {
+  font-size: 16px; line-height: 1.6;
+  color: var(--ink); font-style: italic;
+  margin-bottom: 12px;
+}
+.quote-block .source {
+  font-size: 12px; color: var(--slate);
+  letter-spacing: 0.03em;
+}
+.quote-block .source strong { color: var(--ink); font-weight: 600; }
+
+.insight-conclusion {
+  background: var(--accent-soft);
+  padding: 24px 28px;
+  border-radius: 2px;
+  margin-top: 24px;
+  border-left: 4px solid var(--accent);
+}
+.insight-conclusion p { font-size: 16px; color: var(--ink); line-height: 1.55; }
+.insight-conclusion p strong { font-weight: 600; }
+
+/* ACTO 3 — LA APUESTA */
+.bet-headline {
+  font-size: 24px; font-weight: 500; color: var(--ink);
+  line-height: 1.4; margin: 24px 0 36px; letter-spacing: -0.01em;
+  max-width: 880px;
+}
+.bet-headline strong { font-weight: 700; }
+
+.distribution {
+  display: grid; grid-template-columns: 1fr;
+  gap: 16px; margin: 36px 0;
+}
+.dist-row {
+  display: grid; grid-template-columns: 100px 1fr 200px;
+  align-items: center; padding: 24px 28px;
+  background: white; border: 1px solid var(--line);
+  border-radius: 6px; box-shadow: var(--shadow);
+  gap: 24px;
+}
+.dist-row .pct {
+  font-size: 56px; font-weight: 600; line-height: 1;
+  letter-spacing: -0.03em; color: var(--accent);
+}
+.dist-row.maintain .pct { color: var(--slate); }
+.dist-row.bet .pct { color: var(--accent); }
+.dist-row.cheap .pct { color: var(--p2); }
+.dist-row .body h4 {
+  font-size: 18px; font-weight: 600; margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.dist-row .body p { font-size: 14px; color: var(--slate); line-height: 1.5; }
+.dist-row .label {
+  font-size: 11px; color: var(--slate);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-align: right;
+  padding-left: 24px; border-left: 1px solid var(--line);
+}
+.dist-row .label strong {
+  display: block; font-size: 14px; color: var(--ink);
+  font-weight: 600; margin-top: 4px;
+}
+
+.bet-frame {
+  background: var(--ink); color: white;
+  padding: 28px 32px; border-radius: 4px;
+  margin: 32px 0; max-width: 880px;
+}
+.bet-frame .lbl {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 10px;
+}
+.bet-frame p { font-size: 17px; line-height: 1.6; color: white; }
+.bet-frame p strong { color: var(--accent); font-weight: 600; }
+
+/* ACTO 4 — ORGANIC */
+.organic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.organic-card {
+  padding: 28px; background: white;
+  border: 1px solid var(--line); border-radius: 4px;
+  box-shadow: var(--shadow);
+}
+.organic-card.video-card {
+  padding: 0;
+  display: grid; grid-template-columns: 200px 1fr;
+  overflow: hidden;
+}
+.organic-card.video-card .card-media {
+  background: var(--ink); position: relative;
+}
+.organic-card.video-card .card-media .video-wrap {
+  position: relative; width: 100%; height: 100%;
+  cursor: pointer; overflow: hidden;
+}
+.organic-card.video-card .card-media .video-wrap video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.organic-card.video-card .card-media.dual {
+  display: grid; grid-template-rows: 1fr 1fr; gap: 2px;
+}
+.organic-card.video-card .card-body { padding: 24px 26px; }
+.organic-card .card-media .play-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,37,64,0.15); transition: background .15s;
+}
+.organic-card .card-media .play-overlay:hover { background: rgba(10,37,64,0.05); }
+.organic-card .card-media .play-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.organic-card .card-media .play-icon::after {
+  content: ''; width: 0; height: 0;
+  border-left: 12px solid var(--ink);
+  border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+  margin-left: 3px;
+}
+.organic-card .video-wrap.playing .play-overlay { display: none; }
+.organic-card .lbl {
+  font-size: 11px; color: var(--accent);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 8px;
+}
+.organic-card .stat-line {
+  font-size: 11px; color: var(--slate);
+  letter-spacing: 0.04em; margin-bottom: 8px;
+  display: flex; gap: 12px; align-items: center;
+}
+.organic-card .stat-line .views { color: var(--accent); font-weight: 600; }
+.organic-card h4 {
+  font-size: 18px; font-weight: 600;
+  letter-spacing: -0.01em; margin-bottom: 12px;
+}
+.organic-card p { color: var(--slate); font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
+.organic-card .quote {
+  background: var(--bg); padding: 12px 14px;
+  border-left: 2px solid var(--accent);
+  font-size: 13px; font-style: italic;
+  color: var(--slate); margin-top: 12px; line-height: 1.5;
+}
+.organic-card .replicable {
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 13px; color: var(--ink);
+}
+.organic-card .replicable strong {
+  display: block; margin-bottom: 8px;
+  font-size: 11px; color: var(--accent);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.organic-card .replicable ul { list-style: none; padding-left: 0; }
+.organic-card .replicable li {
+  padding-left: 16px; position: relative;
+  margin-bottom: 6px; line-height: 1.45;
+  color: var(--slate); font-size: 13px;
+}
+.organic-card .replicable li::before {
+  content: '→'; position: absolute; left: 0; color: var(--accent);
+}
+
+/* APENDICE */
+.appendix-marker {
+  text-align: center; padding: 64px 0 32px;
+  font-size: 12px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--slate);
+  font-weight: 600;
+}
+.appendix-marker::before, .appendix-marker::after {
+  content: ''; display: inline-block;
+  width: 60px; height: 1px;
+  background: var(--line); vertical-align: middle;
+  margin: 0 16px;
+}
+.app-section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+.app-head { margin-bottom: 32px; }
+.app-head .lbl {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--slate); font-weight: 600; margin-bottom: 6px;
+}
+.app-head h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.015em; }
+
+/* DONUT (4 patterns) */
+.pattern-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
+.donut-wrap { display: flex; justify-content: center; }
+.legend { display: flex; flex-direction: column; gap: 14px; }
+.legend-item {
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 16px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px solid var(--line);
+}
+.dot { width: 12px; height: 12px; border-radius: 2px; align-self: center; }
+.legend-item .name { font-weight: 500; font-size: 14px; }
+.legend-item .name .desc { display: block; font-size: 12px; color: var(--slate); font-weight: 400; margin-top: 2px; }
+.legend-item .pct { font-weight: 600; font-size: 17px; color: var(--ink); }
+
+/* TABLA PLATAFORMAS */
+table.platforms {
+  width: 100%; border-collapse: collapse;
+  background: white; box-shadow: var(--shadow);
+  margin: 16px 0;
+}
+table.platforms th, table.platforms td {
+  padding: 12px 14px; text-align: left;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px; line-height: 1.4;
+  vertical-align: top;
+}
+table.platforms th {
+  background: var(--navy); color: white;
+  font-weight: 600; font-size: 12px;
+  letter-spacing: 0.04em;
+}
+table.platforms td.dim { font-weight: 600; width: 18%; }
+table.platforms td.youtube { background: var(--accent-soft); font-weight: 500; }
+
+/* AD LIBRARY */
+.filter-bar { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.filter-pill {
+  background: white; border: 1px solid var(--line);
+  padding: 7px 14px; border-radius: 18px;
+  font-size: 12px; cursor: pointer; font-family: inherit;
+  transition: all .15s; color: var(--slate);
+}
+.filter-pill:hover { border-color: var(--ink); color: var(--ink); }
+.filter-pill.active { background: var(--ink); color: white; border-color: var(--ink); }
+.ads-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ad-card {
+  background: white; border-radius: 6px;
+  overflow: hidden; box-shadow: var(--shadow);
+  transition: transform .2s, box-shadow .2s;
+  display: flex; flex-direction: column;
+}
+.ad-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(10,37,64,0.08);
+}
+.ad-card .video-wrap {
+  position: relative; aspect-ratio: 9/16;
+  background: var(--ink); cursor: pointer; overflow: hidden;
+}
+.ad-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ad-card .play-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(10,37,64,0.15); transition: background .15s;
+}
+.ad-card .play-overlay:hover { background: rgba(10,37,64,0.05); }
+.ad-card .play-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.ad-card .play-icon::after {
+  content: ''; width: 0; height: 0;
+  border-left: 12px solid var(--ink);
+  border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+  margin-left: 3px;
+}
+.ad-card.playing .play-overlay { display: none; }
+.ad-card .info { padding: 12px 14px; border-top: 1px solid var(--line); }
+.ad-card .brand-row {
+  display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;
+}
+.ad-card .brand-name { font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.ad-card .pattern-tag {
+  font-size: 9px; font-weight: 600;
+  padding: 2px 7px; border-radius: 3px;
+  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+}
+.tag-p1 { background: #DBE7E9; color: var(--p1); }
+.tag-p2 { background: #D8EFE9; color: #1E7A6F; }
+.tag-p3 { background: #FBF1D6; color: #8A7327; }
+.tag-p4 { background: #FCE3D0; color: #B45A2A; }
+.tag-p5 { background: #FAD7CC; color: #B0432C; }
+.ad-card .why { font-size: 11px; color: var(--slate); line-height: 1.4; }
+
+/* FOOTER */
+footer {
+  background: var(--navy); color: rgba(255,255,255,0.6);
+  padding: 56px 0 32px; font-size: 13px;
+}
+footer .top {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 32px; padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+footer h5 { color: white; font-size: 12px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 6px; font-size: 12px; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .15s; }
+footer a:hover { color: white; }
+footer .method-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6px; margin-top: 8px;
+}
+footer .method-grid .m-item {
+  font-size: 11px; color: rgba(255,255,255,0.55);
+}
+footer .method-grid .m-item span { color: white; font-weight: 500; }
+footer .bottom {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  .hero h1 { font-size: 36px; }
+  .hero { padding: 64px 0 56px; }
+  .pattern-grid, .platform-grid, .organic-grid {
+    grid-template-columns: 1fr; gap: 24px;
+  }
+  .scoreboard { grid-template-columns: 1fr; }
+  .dist-row { grid-template-columns: 70px 1fr; }
+  .dist-row .label { display: none; }
+  .ads-grid { grid-template-columns: repeat(2, 1fr); }
+  .s-title { font-size: 28px; }
+  table.diag-table th, table.diag-table td { padding: 10px 12px; font-size: 12px; }
+  table.platforms th, table.platforms td { padding: 8px 10px; font-size: 11px; }
+  nav ul { display: none; }
+  footer .top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">Trafilea <span class="accent">·</span> Análisis Competitivo</div>
+    <nav>
+      <ul>
+        <li><a href="#contexto">Contexto</a></li>
+        <li><a href="#acto1">Diagnóstico</a></li>
+        <li><a href="#acto2">Insight</a></li>
+        <li><a href="#acto3">La apuesta</a></li>
+        <li><a href="#acto4">La prueba</a></li>
+        <li><a href="#apendice">Apéndice</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">YouTube Paid Shorts · Análisis Competitivo · Mayo 2026</div>
+    <h1>El blind spot de YouTube <span class="accent">— qué hace diferente la categoría y la apuesta de Trafilea.</span></h1>
+    <p class="subtitle">YouTube Shorts se mueve distinto a Meta y TikTok. Análisis competitivo de paid Shorts en EE.UU., el insight estructural que explica el comportamiento de la categoría, y la apuesta concreta para que Trafilea capture lo que YouTube específicamente premia.</p>
+    <div class="meta">
+      <span><strong>Sample</strong> · 240 ads clasificados · 100 visualmente revisados</span>
+      <span><strong>Fuente</strong> · BigSpy AdSpy · YouTube Shorts · Inglés · EE.UU.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 0 — CONTEXTO INTERNO -->
+<section class="s" id="contexto">
+  <div class="container">
+    <div class="s-head">
+      <div class="act-num">Sección 0 · Contexto interno</div>
+      <h2 class="s-title">Trafilea en YouTube hoy</h2>
+      <p class="s-subtitle">Cuatro meses de inversión sostenida en YouTube Shorts. Curva de spend al alza, ROAS estancado, CPMs creciendo.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px;">
+      <div style="background: white; padding: 24px; border-left: 4px solid var(--accent); box-shadow: var(--shadow);">
+        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 8px;">Spend mensual · Abr 2026</div>
+        <div style="font-size: 38px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; line-height: 1;">$130K</div>
+        <div style="font-size: 12px; color: var(--slate); margin-top: 8px;">+37% vs Enero · $95K → $130K</div>
+      </div>
+      <div style="background: white; padding: 24px; border-left: 4px solid var(--accent); box-shadow: var(--shadow);">
+        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 8px;">ROAS · Abr 2026</div>
+        <div style="font-size: 38px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; line-height: 1;">0.78</div>
+        <div style="font-size: 12px; color: var(--slate); margin-top: 8px;">Sin superar 1.0 en 4 meses</div>
+      </div>
+      <div style="background: white; padding: 24px; border-left: 4px solid var(--accent); box-shadow: var(--shadow);">
+        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 8px;">CPM · 4 meses</div>
+        <div style="font-size: 38px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; line-height: 1;">+30%</div>
+        <div style="font-size: 12px; color: var(--slate); margin-top: 8px;">$10 → $13 · competencia subiendo</div>
+      </div>
+    </div>
+
+    <div style="background: white; padding: 24px 28px; border-radius: 4px; box-shadow: var(--shadow); margin-bottom: 24px;">
+      <div style="font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 16px;">Spend mensual + ROAS · YouTube Shorts · Ene-Abr 2026</div>
+      <svg viewBox="0 0 700 340" width="100%" style="max-width: 720px; display: block;" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#E5E9EE" stroke-dasharray="2,4">
+          <line x1="80" y1="60" x2="620" y2="60"/>
+          <line x1="80" y1="110" x2="620" y2="110"/>
+          <line x1="80" y1="160" x2="620" y2="160"/>
+          <line x1="80" y1="210" x2="620" y2="210"/>
+        </g>
+        <text x="80" y="48" fill="#0A2540" font-size="10" font-weight="600" letter-spacing="1">SPEND ($K)</text>
+        <text x="65" y="64" text-anchor="end" fill="#5A6A7E" font-size="10">$150</text>
+        <text x="65" y="114" text-anchor="end" fill="#5A6A7E" font-size="10">$112</text>
+        <text x="65" y="164" text-anchor="end" fill="#5A6A7E" font-size="10">$75</text>
+        <text x="65" y="214" text-anchor="end" fill="#5A6A7E" font-size="10">$37</text>
+        <text x="65" y="264" text-anchor="end" fill="#5A6A7E" font-size="10">$0</text>
+        <text x="635" y="48" fill="#FF5A36" font-size="10" font-weight="600" letter-spacing="1">ROAS</text>
+        <text x="635" y="64" text-anchor="start" fill="#FF5A36" font-size="10">1.0</text>
+        <text x="635" y="114" text-anchor="start" fill="#FF5A36" font-size="10">0.75</text>
+        <text x="635" y="164" text-anchor="start" fill="#FF5A36" font-size="10">0.50</text>
+        <text x="635" y="214" text-anchor="start" fill="#FF5A36" font-size="10">0.25</text>
+
+        <line x1="80" y1="60" x2="620" y2="60" stroke="#FF5A36" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+
+        <rect x="112" y="133" width="70" height="127" fill="#0A2540" opacity="0.7" rx="2"/>
+        <rect x="247" y="113" width="70" height="147" fill="#0A2540" opacity="0.75" rx="2"/>
+        <rect x="382" y="107" width="70" height="153" fill="#0A2540" opacity="0.8" rx="2"/>
+        <rect x="517" y="87" width="70" height="173" fill="#0A2540" opacity="0.9" rx="2"/>
+
+        <text x="147" y="126" text-anchor="middle" fill="#0A2540" font-size="12" font-weight="600">$95K</text>
+        <text x="282" y="106" text-anchor="middle" fill="#0A2540" font-size="12" font-weight="600">$110K</text>
+        <text x="417" y="100" text-anchor="middle" fill="#0A2540" font-size="12" font-weight="600">$115K</text>
+        <text x="552" y="80" text-anchor="middle" fill="#0A2540" font-size="13" font-weight="700">$130K</text>
+
+        <polyline points="147,90 282,110 417,90 552,104" fill="none" stroke="#FF5A36" stroke-width="2.5"/>
+        <circle cx="147" cy="90" r="5" fill="#FF5A36" stroke="white" stroke-width="2"/>
+        <circle cx="282" cy="110" r="5" fill="#FF5A36" stroke="white" stroke-width="2"/>
+        <circle cx="417" cy="90" r="5" fill="#FF5A36" stroke="white" stroke-width="2"/>
+        <circle cx="552" cy="104" r="6" fill="#FF5A36" stroke="white" stroke-width="2"/>
+
+        <text x="147" y="82" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.85</text>
+        <text x="282" y="125" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.75</text>
+        <text x="417" y="82" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.85</text>
+        <text x="552" y="96" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.78</text>
+
+        <line x1="80" y1="260" x2="620" y2="260" stroke="#0A2540" stroke-width="1.5"/>
+        <text x="147" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">Enero</text>
+        <text x="282" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">Febrero</text>
+        <text x="417" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">Marzo</text>
+        <text x="552" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">Abril</text>
+
+        <rect x="80" y="312" width="14" height="14" fill="#0A2540" opacity="0.75"/>
+        <text x="102" y="324" fill="#5A6A7E" font-size="12">Spend mensual</text>
+        <line x1="220" y1="319" x2="244" y2="319" stroke="#FF5A36" stroke-width="2.5"/>
+        <circle cx="232" cy="319" r="4" fill="#FF5A36"/>
+        <text x="252" y="324" fill="#5A6A7E" font-size="12">ROAS</text>
+        <line x1="350" y1="319" x2="374" y2="319" stroke="#FF5A36" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+        <text x="382" y="324" fill="#5A6A7E" font-size="11" font-style="italic">Breakeven (ROAS = 1.0)</text>
+      </svg>
+      <div style="font-size: 11px; color: var(--slate); margin-top: 14px; font-style: italic;">Fuente: Ad Creatives Analytics interno · shapermint.com / United States / YouTube · Ene-Abr 2026</div>
+    </div>
+
+    <div style="background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 24px 28px; border-radius: 2px;">
+      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px;">La pregunta del board</div>
+      <p style="font-size: 17px; line-height: 1.55; color: var(--ink);">Estamos invirtiendo <strong>$130K/mes en YouTube Shorts</strong>. ROAS no ha superado 1.0 en 4 meses — y los CPMs siguen subiendo. <strong>Más spend con la misma estrategia no va a mejorar la curva. La pregunta no es "cómo invertimos más" — es "cómo invertimos diferente".</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTO 1 — DIAGNÓSTICO -->
+<section class="s alt" id="acto1">
+  <div class="container">
+    <div class="s-head">
+      <div class="act-num">Acto 1 · Diagnóstico</div>
+      <h2 class="s-title">Apparel y DR juegan dos juegos distintos en YouTube.</h2>
+      <p class="s-subtitle">El juego de DR speed (claim cuantificado, doctor, urgency) tiene desventaja estructural para apparel. El juego de storytelling depth — apparel lo gana naturalmente. La pregunta es en cuál de los dos juegos invertimos más volumen.</p>
+    </div>
+
+    <div class="diag-callout">
+      <div class="lbl">Verdict del análisis</div>
+      <p>Apparel tiene <strong>desventaja estructural en 5 de 6 dimensiones</strong> contra DR categories en el formato Direct Response Shorts. Pero <strong>gana 1 dimensión: storytelling</strong>. Y resulta que esa es exactamente la dimensión que YouTube premia. <strong>La oportunidad es jugar el juego donde tenemos ventaja, no el juego donde estructuralmente perdemos.</strong></p>
+    </div>
+
+    <table class="diag-table">
+      <thead>
+        <tr>
+          <th style="width: 44%;">Lo que pesa en YouTube Shorts</th>
+          <th style="width: 28%; text-align: center;">Apparel</th>
+          <th style="width: 28%; text-align: center;">Otras categorías DTC<br><span style="font-weight: 400; font-size: 11px; opacity: 0.75; letter-spacing: 0.04em;">supplements · healthcare · hair · beauty</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dim"><strong>Velocidad de venta</strong><br><span style="font-weight: 400; font-size: 12px; color: var(--slate);">claim cuantificado · urgency · autoridad médica · variedad de hooks</span></td>
+          <td style="text-align: center; vertical-align: middle;"><span style="color: #C2C9D2; font-size: 48px; font-weight: 700; line-height: 1;">✗</span></td>
+          <td style="text-align: center; vertical-align: middle;"><span style="color: var(--p2); font-size: 48px; font-weight: 700; line-height: 1;">✓</span></td>
+        </tr>
+        <tr class="storytelling-row">
+          <td class="dim"><strong>Profundidad de historia</strong><br><span style="font-weight: 400; font-size: 12px; color: var(--slate);">body confidence · transformación · representación</span></td>
+          <td style="text-align: center; vertical-align: middle; background: var(--accent-soft);"><span style="color: var(--accent); font-size: 48px; font-weight: 700; line-height: 1;">✓</span></td>
+          <td style="text-align: center; vertical-align: middle;"><span style="color: #C2C9D2; font-size: 48px; font-weight: 700; line-height: 1;">✗</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 19px; line-height: 1.5; color: var(--ink); margin: 28px 0 8px; max-width: 820px; font-weight: 500;">Apparel <strong style="color: var(--slate);">pierde en velocidad</strong>. Gana en <strong style="color: var(--accent);">historia</strong>. <strong>Y YouTube premia historia.</strong></p>
+    <p style="font-size: 12px; color: var(--slate); margin-top: 4px;">→ Análisis dimensión por dimensión (6 filas detalladas) en Apéndice 04.</p>
+
+  </div>
+</section>
+
+<!-- ACTO 2 — INSIGHT -->
+<section class="s dark" id="acto2">
+  <div class="container">
+    <div class="s-head">
+      <div class="act-num">Acto 2 · Insight</div>
+      <h2 class="s-title">YouTube no es Meta. Es research mode.</h2>
+      <p class="s-subtitle">Y resulta que la única dimensión donde apparel gana — storytelling — es exactamente lo que YouTube premia.</p>
+    </div>
+
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="name">Meta · FB / IG</div>
+        <div class="mode">Scrollear amigos</div>
+        <div class="want">Distracción rápida · lean-back</div>
+      </div>
+      <div class="platform-card">
+        <div class="name">TikTok</div>
+        <div class="mode">Lean-back entretenimiento</div>
+        <div class="want">Dopamina · For You algorithm</div>
+      </div>
+      <div class="platform-card youtube">
+        <div class="name">YouTube</div>
+        <div class="mode">Activo buscando algo</div>
+        <div class="want">Aprender · investigar · decidir</div>
+      </div>
+    </div>
+
+    <div style="background: white; padding: 24px 28px; border-radius: 4px; color: var(--ink); margin: 24px 0;">
+      <p style="font-size: 16px; line-height: 1.55;">La gente llega a YouTube tipeando <strong>"cómo elegir un bra para 50+"</strong>, <strong>"reseñas Shapermint vs Spanx"</strong>. Tu paid Short <strong>no compite con otros ads</strong> — compite con <strong>Shorts orgánicos de creadores</strong> que están enseñando lo que el usuario buscó.</p>
+    </div>
+
+    <div class="quote-block">
+      <div class="text">"The most effective Shorts ads avoid aesthetics that feel like conventional ads. The best ones blend with organic content — user-generated, DIY vibe, conversational tone."</div>
+      <div class="source"><strong>Think with Google</strong> · análisis interno de 2,000+ Shorts ads</div>
+    </div>
+
+    <div style="background: var(--accent-soft); padding: 24px 28px; border-radius: 4px; border-left: 4px solid var(--accent); margin: 28px 0; color: var(--ink);">
+      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 12px;">Caso pagado documentado · Sephora Holiday 2025</div>
+      <p style="font-size: 16px; line-height: 1.6; margin-bottom: 12px;">Sephora corrió una campaña <strong>Shorts-only Demand Gen</strong> con <strong>7 creators</strong> (Wendy Skin, Kenna Marie, Stephanie Voltaire entre otras) para Holiday 2025 — gift guides estacionales como hook, sin producción in-house de marca.</p>
+      <p style="font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">Resultado: +82% lift relativo en searches de "sephora holiday"</p>
+      <p style="font-size: 14px; color: var(--slate); line-height: 1.5;">Best-in-class brand lift en la campaña. <strong>Es el caso que prueba que paid Shorts con storytelling/creator-led genera business outcome medible</strong> — no solo views.</p>
+    </div>
+
+    <div class="insight-conclusion">
+      <p><strong>La implicación:</strong> los Shorts pagos que ganan blendean con storytelling y autoridad — la dimensión donde apparel gana. <strong>YouTube premia lo que apparel hace bien.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTO 3 — LA APUESTA -->
+<section class="s" id="acto3">
+  <div class="container">
+    <div class="s-head">
+      <div class="act-num">Acto 3 · La apuesta</div>
+      <h2 class="s-title">Competimos en el lane donde apparel gana, no en el de DR categories.</h2>
+      <p class="s-subtitle">No reducimos lo que ya hacemos. Redistribuimos el otro 30% del mix hacia formatos que YouTube específicamente premia.</p>
+    </div>
+
+    <div style="background: var(--bg); border: 1px dashed var(--slate); padding: 14px 18px; border-radius: 4px; margin-bottom: 28px; font-size: 13px; color: var(--slate); max-width: 880px;">
+      <strong style="color: var(--ink);">Scope:</strong> esta propuesta aplica al <strong style="color: var(--ink);">mix de creatives dentro del budget actual de YouTube Shorts</strong> — no a incremento de spend ni a redistribución entre canales. Los porcentajes refieren al # de variantes activas por pattern.
+    </div>
+
+    <div class="bet-headline"><strong>Distribución 70 / 20 / 10</strong> del creative mix de YouTube Shorts. El 70% sigue intacto — la apuesta nueva es el 30% restante.</div>
+
+    <div style="background: white; border: 1px solid var(--line); border-radius: 6px; padding: 24px; margin-bottom: 32px; max-width: 880px; box-shadow: var(--shadow);">
+      <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 12px;">¿De dónde sale el 70/20/10?</div>
+      <p style="font-size: 14px; line-height: 1.6; color: var(--ink); margin-bottom: 16px;">El número está anclado en la <strong>distribución de patterns en los 240 ads de la categoría YouTube</strong>. No es arbitrario — es un movimiento incremental hacia el mix que la categoría ya valida.</p>
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+        <thead>
+          <tr style="background: var(--navy); color: white;">
+            <th style="padding: 10px 14px; text-align: left; font-weight: 600;">Distribución</th>
+            <th style="padding: 10px 14px; text-align: center; font-weight: 600;">DR UGC</th>
+            <th style="padding: 10px 14px; text-align: center; font-weight: 600;">Authority + Series</th>
+            <th style="padding: 10px 14px; text-align: center; font-weight: 600;">Repurposed Organic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 10px 14px; color: var(--slate);">Categoría YT (240 ads)</td>
+            <td style="padding: 10px 14px; text-align: center;">58%</td>
+            <td style="padding: 10px 14px; text-align: center;">13%</td>
+            <td style="padding: 10px 14px; text-align: center;">6%</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 10px 14px; color: var(--slate);">Trafilea hoy (estimado)</td>
+            <td style="padding: 10px 14px; text-align: center; font-weight: 600;">~100%</td>
+            <td style="padding: 10px 14px; text-align: center;">0%</td>
+            <td style="padding: 10px 14px; text-align: center;">0%</td>
+          </tr>
+          <tr style="background: var(--accent-soft);">
+            <td style="padding: 10px 14px; font-weight: 600; color: var(--ink);">Propuesta</td>
+            <td style="padding: 10px 14px; text-align: center; font-weight: 700; color: var(--ink);">70%</td>
+            <td style="padding: 10px 14px; text-align: center; font-weight: 700; color: var(--accent);">20%</td>
+            <td style="padding: 10px 14px; text-align: center; font-weight: 700; color: var(--accent);">10%</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 12px; color: var(--slate); margin-top: 12px; line-height: 1.5;"><strong>Argumento:</strong> Trafilea queda <strong style="color: var(--ink);">por encima del promedio de categoría en DR UGC</strong> (70 vs 58), pero <strong style="color: var(--ink);">agrega el 30% que la categoría valida</strong>. Movimiento conservador, no pivot disruptivo.</p>
+    </div>
+
+    <div class="distribution">
+      <div class="dist-row maintain">
+        <div class="pct">70%</div>
+        <div class="body">
+          <h4>Direct Response UGC — mantener, no escalar</h4>
+          <p>Es lo que ya sabemos hacer y lo que ya rinde. Sigue corriendo igual. <strong>No tocamos volumen ni creative.</strong> El research confirma que apparel no puede ganar este formato contra supplements — pero podemos sostenerlo como base.</p>
+        </div>
+        <div class="label">Status<strong>Sin cambios</strong></div>
+      </div>
+
+      <div class="dist-row bet">
+        <div class="pct">20%</div>
+        <div class="body">
+          <h4>Storytelling Series + Authority apparel-fit</h4>
+          <p>La apuesta nueva. Dos formatos que YouTube premia y donde apparel tiene ventaja estructural:</p>
+          <ul style="margin-top: 8px; padding-left: 18px; color: var(--slate); font-size: 13.5px; line-height: 1.6;">
+            <li><strong>Series content</strong> — capítulos temáticos en lugar de ads sueltos. Cada Short avanza una pregunta. Quien ve el episodio 5 ya está emocionalmente comprometida (jugada Liberare).</li>
+            <li><strong>Authority apparel-fit</strong> — instructora yoga, fisioterapeuta, Pilates, posture coach. <em>NO</em> doctores (no encajan con apparel + perfil mayoritariamente masculino no resuena con la audiencia).</li>
+          </ul>
+        </div>
+        <div class="label">Status<strong>Apuesta nueva</strong></div>
+      </div>
+
+      <div class="dist-row cheap">
+        <div class="pct">10%</div>
+        <div class="body">
+          <h4>Repurposed Organic</h4>
+          <p>Recortar contenido orgánico ya existente (creadoras propias, podcasts, behind-the-scenes) como paid. <strong>Cero producción adicional.</strong> Es la cadena de suministro creativa más barata que tenemos — y se ve nativa en el feed de Shorts (jugada Magic Mind).</p>
+        </div>
+        <div class="label">Status<strong>Cero costo</strong></div>
+      </div>
+    </div>
+
+    <div class="bet-frame">
+      <div class="lbl">El frame para el board</div>
+      <p>El 70% que ya funciona <strong>no se toca</strong>. El movimiento es <strong>reorganizar el otro 30%</strong> hacia los formatos que YouTube específicamente premia y donde apparel tiene ventaja estructural. Es un cambio incremental, no un pivot disruptivo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTO 4 — LA PRUEBA -->
+<section class="s alt" id="acto4">
+  <div class="container">
+    <div class="s-head">
+      <div class="act-num">Acto 4 · La prueba</div>
+      <h2 class="s-title">Esto no es teoría. Los winners ya están haciendo esto.</h2>
+      <p class="s-subtitle">Cuatro plays orgánicos validan el playbook. Knix (period intimates), Liberare (lingerie), Vanessa Moynihan (swimsuits maternity) y bodyshapinggirl (waist trainer) son <strong>categorías adyacentes a shapewear</strong> — la mecánica del play es transferible.</p>
+    </div>
+
+    <div style="background: var(--accent-soft); padding: 20px 24px; border-radius: 4px; border-left: 4px solid var(--accent); margin-bottom: 32px; max-width: 920px;">
+      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 8px;">La oportunidad de ROAS</div>
+      <p style="font-size: 15px; line-height: 1.55; color: var(--ink);">Estas 4 marcas adyacentes (period intimates, lingerie, swimsuits, body-shaping) generan <strong>18M+ views combinados</strong> con este playbook — sin spend desproporcionado. <strong style="color: var(--accent);">Adaptarlo a Shapermint es la jugada concreta para mover el ROAS de 0.78 hacia arriba</strong> — sin aumentar nuestro spend actual.</p>
+    </div>
+
+    <div class="organic-grid">
+      <div class="organic-card video-card">
+        <div class="card-media">
+          <div class="video-wrap">
+            <video preload="metadata" playsinline muted poster="posters/organic_Vanessa_Swimsuits.jpg">
+              <source src="videos/organic_Vanessa_Swimsuits.mp4" type="video/mp4">
+            </video>
+            <div class="play-overlay"><div class="play-icon"></div></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="lbl">Play · Audiencia como co-decisora</div>
+          <div class="stat-line"><span>Vanessa Moynihan</span><span class="views">10.2M views</span></div>
+          <h4>"1️⃣-4️⃣ which is your fav?"</h4>
+          <p>No es un product review. Es <strong>"audiencia como co-decisora de un momento real"</strong>. La creadora no vende: pide ayuda. La compra es un efecto secundario del entretenimiento.</p>
+          <div class="quote">Cuatro mecanismos al mismo tiempo: stakes personales (embarazo + swimsuit shopping), opciones numeradas (1-2-3-4), vulnerabilidad estratégica (admite defectos), comment bait → algoritmo empuja.</div>
+          <div class="replicable">
+            <strong>Replicable Shapermint</strong>
+            <ul>
+              <li>"Tengo boda, qué bra/shapewear elijo de estas 4 opciones?"</li>
+              <li>Pedir feedback de la audiencia, no decir "compren"</li>
+              <li>Incluir intencionalmente una opción imperfecta para credibilidad</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="organic-card">
+        <div class="lbl">Play · Cuestionar la herencia</div>
+        <h4>Knix</h4>
+        <p>Knix corre el play <strong>"question the inheritance"</strong>: cuestiona lo que tu mamá te pasó, apila 3 dolores específicos, vende la categoría —no el producto— como salida, y cierra con meme-bait. Persuasión estructurada en voz TikTok.</p>
+        <div class="replicable">
+          <strong>Replicable Shapermint</strong>
+          <ul>
+            <li>"Sólo porque tu mamá te dijo que el shapewear tiene que clavarse para funcionar, no significa que sea así."</li>
+            <li>"Sólo porque shaping era sinónimo de asfixiarte, no significa que tenga que seguir siéndolo."</li>
+            <li>"Sólo porque tu mamá escondía su shapewear, no significa que tú tengas que hacerlo."</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="organic-card video-card">
+        <div class="card-media dual">
+          <div class="video-wrap">
+            <video preload="metadata" playsinline muted poster="posters/organic_Liberare_TakeItOff.jpg">
+              <source src="videos/organic_Liberare_TakeItOff.mp4" type="video/mp4">
+            </video>
+            <div class="play-overlay"><div class="play-icon"></div></div>
+          </div>
+          <div class="video-wrap">
+            <video preload="metadata" playsinline muted poster="posters/organic_Liberare_TinyDetail.jpg">
+              <source src="videos/organic_Liberare_TinyDetail.mp4" type="video/mp4">
+            </video>
+            <div class="play-overlay"><div class="play-icon"></div></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="lbl">Play · Content-as-product-development</div>
+          <div class="stat-line"><span>Liberare</span><span class="views">3.2M + 1.2M views</span></div>
+          <h4>Serial content como playbook</h4>
+          <p>No es ad ni UGC. Es <strong>contenido como desarrollo de producto</strong>. Cada Short es un episodio de un show. Quien ve el episodio 5 ya está emocionalmente comprometida.</p>
+          <div class="quote">Trata YouTube como plataforma de show, no como ad feed. Cada Short es chapter de la temporada del brand. La audiencia se construye episodio a episodio.</div>
+          <div class="replicable">
+            <strong>Replicable Shapermint</strong>
+            <ul>
+              <li>Pensar en temporadas / serie, no en ads sueltos</li>
+              <li>Cada Short avanza una pregunta o detalle del producto</li>
+              <li>Construir continuidad: viewers regulares → emocional → conversión</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="organic-card video-card">
+        <div class="card-media">
+          <div class="video-wrap">
+            <video preload="metadata" playsinline muted poster="posters/organic_bodyshapinggirl.jpg">
+              <source src="videos/organic_bodyshapinggirl.mp4" type="video/mp4">
+            </video>
+            <div class="play-overlay"><div class="play-icon"></div></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="lbl">Play · Veterana escéptica con receipts</div>
+          <div class="stat-line"><span>bodyshapinggirl</span><span class="views">3.4M views</span></div>
+          <h4>"Postpartum 8 Kids + 200lb · Before & After"</h4>
+          <p>Construye confianza desde la <strong>posición de veterana escéptica</strong>: abre con autoridad personal específica, predice que el producto va a fallar, después revela lo opuesto. Las medidas exactas son los receipts. <strong>El cuerpo es la prueba; los números son el contrato.</strong></p>
+          <div class="quote">Especificidad imposible de inventar es lo que vende. La data es el cierre, no el hook.</div>
+          <div class="replicable">
+            <strong>Replicable Shapermint</strong>
+            <ul>
+              <li>Cast de mujer 50+ con autoridad personal específica</li>
+              <li>Estructura "yo no creía esto, pero…" + medidas reales antes/después</li>
+              <li>Voz coloquial, no copy de marca</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APENDICE -->
+<div class="container">
+  <div class="appendix-marker">Apéndice · evidencia de soporte</div>
+</div>
+
+<section class="app-section" id="apendice">
+  <div class="container">
+    <div class="app-head">
+      <div class="lbl">Apéndice 01</div>
+      <h3>Distribución de patterns en la categoría</h3>
+    </div>
+    <p style="color: var(--slate); margin-bottom: 32px; max-width: 760px;">Sobre 240 ads clasificados, cuatro estructuras dominan la categoría. Direct Response (UGC + Authority) representa el 60% combinado.</p>
+    <div class="pattern-grid">
+      <div class="donut-wrap">
+        <svg width="280" height="280" viewBox="0 0 320 320">
+          <g transform="translate(160,160)">
+            <circle r="120" fill="none" stroke="#F0F2F5" stroke-width="36"/>
+            <!-- Re-distribuido sin Showcase: total 204. P1=58%, P3=23%, P2=13%, P4=6% -->
+            <circle r="120" fill="none" stroke="#264653" stroke-width="36"
+              stroke-dasharray="437.32 754.0" stroke-dashoffset="0" transform="rotate(-90)"/>
+            <circle r="120" fill="none" stroke="#E9C46A" stroke-width="36"
+              stroke-dasharray="173.42 754.0" stroke-dashoffset="-437.32" transform="rotate(-90)"/>
+            <circle r="120" fill="none" stroke="#2A9D8F" stroke-width="36"
+              stroke-dasharray="98.02 754.0" stroke-dashoffset="-610.74" transform="rotate(-90)"/>
+            <circle r="120" fill="none" stroke="#F4A261" stroke-width="36"
+              stroke-dasharray="48.99 754.0" stroke-dashoffset="-708.76" transform="rotate(-90)"/>
+            <text y="-6" text-anchor="middle" font-size="42" font-weight="600" fill="#0A2540">4</text>
+            <text y="20" text-anchor="middle" font-size="11" fill="#5A6A7E" letter-spacing="2">PATRONES</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="dot" style="background:#264653"></div>
+          <div class="name">Direct Response UGC<span class="desc">Creador hablando a cámara, su casa, problema → solución</span></div>
+          <div class="pct">58%</div>
+        </div>
+        <div class="legend-item">
+          <div class="dot" style="background:#E9C46A"></div>
+          <div class="name">Brand Aesthetic<span class="desc">Alta producción, brand-led, cinemático</span></div>
+          <div class="pct">23%</div>
+        </div>
+        <div class="legend-item">
+          <div class="dot" style="background:#2A9D8F"></div>
+          <div class="name">Direct Response with Authority<span class="desc">Doctor, experto o posicionamiento clínico</span></div>
+          <div class="pct">13%</div>
+        </div>
+        <div class="legend-item">
+          <div class="dot" style="background:#F4A261"></div>
+          <div class="name">Repurposed Organic<span class="desc">Clip de podcast, viral, behind-the-scenes</span></div>
+          <div class="pct">6%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="app-section" id="apendice-platforms">
+  <div class="container">
+    <div class="app-head">
+      <div class="lbl">Apéndice 02</div>
+      <h3>Misma creative, distintos KPIs · YouTube Shorts vs Reels vs TikTok</h3>
+    </div>
+    <p style="color: var(--slate); margin-bottom: 24px; max-width: 760px;"><strong>70-80% de las marcas DTC envían el mismo archivo a las 3 plataformas.</strong> La diferenciación que importa no es el creative — es <strong>qué pattern domina el channel mix</strong>. Format es el mismo; channel ROAS no.</p>
+    <table class="platforms">
+      <thead>
+        <tr>
+          <th>Dimensión</th>
+          <th class="youtube">YouTube Shorts</th>
+          <th>Instagram Reels</th>
+          <th>TikTok</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dim">Formato</td>
+          <td class="youtube">9:16 · hasta 60s (3min beta)</td>
+          <td>9:16 · hasta 90s</td>
+          <td>9:16 · hasta 10min</td>
+        </tr>
+        <tr>
+          <td class="dim">Discovery mechanic</td>
+          <td class="youtube">Feed algorítmico + funnel a long-form YT</td>
+          <td>Friends + algorithm mix · social context drives conversion</td>
+          <td>Pure For You algorithm — strongest discovery</td>
+        </tr>
+        <tr>
+          <td class="dim">Audience intent</td>
+          <td class="youtube">Discovery + research / how-to</td>
+          <td>Social + shopping (IG Shop integrated)</td>
+          <td>Lean-back entertainment</td>
+        </tr>
+        <tr>
+          <td class="dim">CPM DTC (2024-25)</td>
+          <td class="youtube">$7–12</td>
+          <td>$9–14 (highest)</td>
+          <td>$5–9 (cheapest)</td>
+        </tr>
+        <tr>
+          <td class="dim">Direct conv rate (DTC)</td>
+          <td class="youtube">Mid (rising)</td>
+          <td>Highest (IG Shop checkout)</td>
+          <td>Lowest (high awareness, low conv)</td>
+        </tr>
+        <tr>
+          <td class="dim">Best-fit pattern</td>
+          <td class="youtube"><strong>Authority + Repurposed Organic</strong> (podcasts, long-form clips)</td>
+          <td>Direct Response UGC</td>
+          <td>Repurposed Organic (storytelling/duet/trends)</td>
+        </tr>
+        <tr>
+          <td class="dim">Por qué ese fit</td>
+          <td class="youtube">Longer attention span, research/learning context</td>
+          <td>Highest commerce intent, shoppable native</td>
+          <td>Trend cycles + duet/stitch culture</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="color: var(--slate); font-size: 12px; margin-top: 14px;"><strong>Fuentes:</strong> 2024-25 DTC benchmarks de Triple Whale, Northbeam, Common Thread Collective · Meta Q4 2024 Reels report · Google Demand Gen 2025 release notes.</p>
+  </div>
+</section>
+
+<section class="app-section" id="apendice-library">
+  <div class="container">
+    <div class="app-head">
+      <div class="lbl">Apéndice 03</div>
+      <h3>17 ejemplos de la categoría · ad library reproducible</h3>
+    </div>
+    <p style="color: var(--slate); margin-bottom: 24px; max-width: 760px;">Curados de la revisión visual de 100 ads. Hacé clic en cualquier thumbnail para reproducir. Filtro por pattern abajo.</p>
+
+    <div class="filter-bar">
+      <button class="filter-pill active" data-filter="all">Todos · 17</button>
+      <button class="filter-pill" data-filter="P1">Direct Response UGC</button>
+      <button class="filter-pill" data-filter="P2">Direct Response with Authority</button>
+      <button class="filter-pill" data-filter="P3">Brand Aesthetic</button>
+      <button class="filter-pill" data-filter="P4">Repurposed Organic</button>
+      <button class="filter-pill" data-filter="P5">Showcase</button>
+    </div>
+
+    <div class="ads-grid">
+      <div class="ad-card" data-pattern="P1">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Shapellx_P1-UGC_BeforeAfter-reddress.jpg">
+            <source src="videos/Shapellx_P1-UGC_BeforeAfter-reddress.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Shapellx</span><span class="pattern-tag tag-p1">DR UGC</span></div>
+          <div class="why">Antes/después en vestido rojo. Outcome-first hook.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P1">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Shapellx_P1-UGC_STOPhand-disruption.jpg">
+            <source src="videos/Shapellx_P1-UGC_STOPhand-disruption.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Shapellx</span><span class="pattern-tag tag-p1">DR UGC</span></div>
+          <div class="why">"STOP" pattern interrupt en segundo 1.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P1">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Shapermint_P1-UGC_BraLifts-Discomfort.jpg">
+            <source src="videos/Shapermint_P1-UGC_BraLifts-Discomfort.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Shapermint</span><span class="pattern-tag tag-p1">DR UGC</span></div>
+          <div class="why">Hook de incomodidad ("bra lifts").</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P1">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/TrueClassic_P1-UGC_DadBod-Problem.jpg">
+            <source src="videos/TrueClassic_P1-UGC_DadBod-Problem.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">True Classic</span><span class="pattern-tag tag-p1">DR UGC</span></div>
+          <div class="why">Hook de tipo de cuerpo ("dad bod").</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P1">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Hims_P1-UGC_GLP1-Checkmarks.jpg">
+            <source src="videos/Hims_P1-UGC_GLP1-Checkmarks.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Hims</span><span class="pattern-tag tag-p1">DR UGC</span></div>
+          <div class="why">"This is why I switched" + checkmarks.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P2">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/AG1_P2-Auth_DrHuberman-Sleep.jpg">
+            <source src="videos/AG1_P2-Auth_DrHuberman-Sleep.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">AG1</span><span class="pattern-tag tag-p2">Authority</span></div>
+          <div class="why">Dr. Huberman + nombre/credencial en zona segura.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P2">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Nutrafol_P2-Auth_PersonalTesti-LongHair.jpg">
+            <source src="videos/Nutrafol_P2-Auth_PersonalTesti-LongHair.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Nutrafol</span><span class="pattern-tag tag-p2">Authority</span></div>
+          <div class="why">Testimonio personal con autoridad médica.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P2">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Nutrafol_P2-Auth_MenopauseFormula.jpg">
+            <source src="videos/Nutrafol_P2-Auth_MenopauseFormula.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Nutrafol</span><span class="pattern-tag tag-p2">Authority</span></div>
+          <div class="why">Fórmula menopausia · audiencia 50+.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P3">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Glossier_P3-Brand_LipEnhancer-Closeup.jpg">
+            <source src="videos/Glossier_P3-Brand_LipEnhancer-Closeup.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Glossier</span><span class="pattern-tag tag-p3">Brand</span></div>
+          <div class="why">Estética de marca de alto craft.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P3">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/SKIMS_P3-Brand_BrownBra-Product.jpg">
+            <source src="videos/SKIMS_P3-Brand_BrownBra-Product.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">SKIMS</span><span class="pattern-tag tag-p3">Brand</span></div>
+          <div class="why">Producto sobre fondo limpio · brand puro.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P3">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/SKIMS_P3-Brand_UltimateBra-GreyTop.jpg">
+            <source src="videos/SKIMS_P3-Brand_UltimateBra-GreyTop.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">SKIMS</span><span class="pattern-tag tag-p3">Brand</span></div>
+          <div class="why">Modelo en top gris · foco en silueta.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P4">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/MagicMind_P4-Org_7DayReview.jpg">
+            <source src="videos/MagicMind_P4-Org_7DayReview.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Magic Mind</span><span class="pattern-tag tag-p4">Organic</span></div>
+          <div class="why">Recortado de orgánico · "review de 7 días".</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P4">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/MagicMind_P4-Org_PodcastSentMe.jpg">
+            <source src="videos/MagicMind_P4-Org_PodcastSentMe.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Magic Mind</span><span class="pattern-tag tag-p4">Organic</span></div>
+          <div class="why">Clip de podcast · cero producción.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P4">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/BetterHelp_P4-Org_PodcastTherapy.jpg">
+            <source src="videos/BetterHelp_P4-Org_PodcastTherapy.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">BetterHelp</span><span class="pattern-tag tag-p4">Organic</span></div>
+          <div class="why">Clip de podcast convertido en ad.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P5">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Temu_P5-Edge_SofaBed-POVDemo.jpg">
+            <source src="videos/Temu_P5-Edge_SofaBed-POVDemo.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Temu</span><span class="pattern-tag tag-p5">Showcase</span></div>
+          <div class="why">Demo POV de producto.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P5">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Temu_P5-Edge_Cookies-1forZero.jpg">
+            <source src="videos/Temu_P5-Edge_Cookies-1forZero.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Temu</span><span class="pattern-tag tag-p5">Showcase</span></div>
+          <div class="why">Oferta agresiva 1×1.</div>
+        </div>
+      </div>
+      <div class="ad-card" data-pattern="P5">
+        <div class="video-wrap">
+          <video preload="metadata" playsinline muted poster="posters/Next_P5-Edge_SPANXatNext-Partnership.jpg">
+            <source src="videos/Next_P5-Edge_SPANXatNext-Partnership.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay"><div class="play-icon"></div></div>
+        </div>
+        <div class="info">
+          <div class="brand-row"><span class="brand-name">Next × Spanx</span><span class="pattern-tag tag-p5">Showcase</span></div>
+          <div class="why">Partnership retail · co-branding.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="app-section" id="apendice-detalle">
+  <div class="container">
+    <div class="app-head">
+      <div class="lbl">Apéndice 04</div>
+      <h3>Análisis estructural detallado · 6 dimensiones</h3>
+    </div>
+    <p style="color: var(--slate); margin-bottom: 24px; max-width: 760px;">Versión expandida del diagnóstico de Acto 1 — desglose dimensión por dimensión que sostiene el resumen "velocidad vs historia". Para quien quiera validar el análisis a fondo.</p>
+    <table class="diag-table">
+      <thead>
+        <tr>
+          <th style="width: 22%;">Dimensión</th>
+          <th>Apparel / Intimates</th>
+          <th>Otras categorías DTC<br><span style="font-weight: 400; font-size: 11px; opacity: 0.75;">supplements · healthcare · hair · beauty · fitness</span></th>
+          <th style="width: 14%;">Winner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="dim">Claim specificity</td>
+          <td>"fits perfectly", "comfortable" — subjetivo, hard to verify.</td>
+          <td>"+30% energy", "sleep in 3 days", "FDA-approved", "stop hair fall in 8 weeks" — measurable.</td>
+          <td class="winner supplements">Otras DTC</td>
+        </tr>
+        <tr>
+          <td class="dim">Visual payoff in 15s</td>
+          <td>Comfort es invisible — never shows on camera. Try-on muestra solo aesthetic.</td>
+          <td>Producto + acto de consumir/aplicar IS the visual. Hair before/after, vision improvement, weight loss.</td>
+          <td class="winner supplements">Otras DTC</td>
+        </tr>
+        <tr>
+          <td class="dim">Authority leverage</td>
+          <td>No credible "expert" archetype — un doctor endorsando un bra feels uncanny.</td>
+          <td>Doctores, dermatólogos, optometristas, hairstylists son native authorities.</td>
+          <td class="winner supplements">Otras DTC</td>
+        </tr>
+        <tr>
+          <td class="dim">Urgency / time-to-result</td>
+          <td>Resultado es "today" — no urgency. Buyer can wait indefinitely.</td>
+          <td>"Subscribe before next batch", "limited stock", subscription cadence built in.</td>
+          <td class="winner supplements">Otras DTC</td>
+        </tr>
+        <tr>
+          <td class="dim">Hook variety</td>
+          <td>Saturated: same 3 hooks (STOP!, before/after, try-on) across Shapellx, Shapermint, SPANX.</td>
+          <td>Diverse: expert testimonial, podcast clip, walk-in store, viral reaction, lifestyle. 5+ active patterns.</td>
+          <td class="winner supplements">Otras DTC</td>
+        </tr>
+        <tr class="storytelling-row">
+          <td class="dim"><strong>Storytelling fit</strong></td>
+          <td><strong>Body-confidence, representation, transformation arcs travel well organically.</strong></td>
+          <td>Hard to make supplements/healthcare emotionally resonant beyond the science angle.</td>
+          <td class="winner apparel">Apparel</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size: 13px; color: var(--slate); margin-top: 16px;"><strong>Score:</strong> Otras categorías DTC ganan 5 de 6 dimensiones (claim, visual, authority, urgency, hook variety). Apparel gana 1 dimensión (storytelling) — y es exactamente la dimensión que YouTube research-mode premia.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="top">
+      <div>
+        <h5>Trafilea · Shapermint</h5>
+        <div>El blind spot de YouTube · Análisis competitivo de paid Shorts</div>
+        <div style="margin-top: 8px; font-size: 11px;">Mayo 2026 · Para revisión interna del board</div>
+        <h5 style="margin-top: 24px;">Metodología</h5>
+        <div class="method-grid">
+          <div class="m-item"><span>Fuente:</span> BigSpy AdSpy</div>
+          <div class="m-item"><span>Red:</span> YouTube Shorts</div>
+          <div class="m-item"><span>Geo · Idioma:</span> EE.UU. · Inglés</div>
+          <div class="m-item"><span>Formato:</span> Vertical 9:16</div>
+          <div class="m-item"><span>Orden:</span> Por impresiones</div>
+          <div class="m-item"><span>Excluidos:</span> Apps, Games, Finanzas, Real Estate</div>
+          <div class="m-item"><span>Sample:</span> 300 ads scrapeados</div>
+          <div class="m-item"><span>Visualizados:</span> 100 ads</div>
+          <div class="m-item"><span>Clasificados:</span> 240 ads</div>
+          <div class="m-item"><span>Featured:</span> 17 ads en library</div>
+        </div>
+      </div>
+      <div>
+        <h5>Fuentes oficiales</h5>
+        <ul>
+          <li><a href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/video/short-form-video-advertising-tips/" target="_blank">Think with Google · Shorts-first research (2,000+ ads)</a></li>
+          <li><a href="https://business.google.com/in/think/search-and-video/creator-marketing-social-strategy/" target="_blank">Think with Google · Sephora Holiday 2025 case</a></li>
+          <li><a href="https://support.google.com/google-ads/answer/16041697" target="_blank">Google Ads Help · Shorts ads specs</a></li>
+          <li><a href="https://www.darkroomagency.com/observatory/youtube-shorts-ads-guide-setup-specs-and-2025-best-practices" target="_blank">Darkroom Agency · Shorts guide</a></li>
+          <li><a href="https://motionapp.com/blog/best-dtc-meta-ad-hooks-2025" target="_blank">Motion · DTC creative benchmarks</a></li>
+          <li>Triple Whale, Northbeam, Common Thread Collective · 2024-25 DTC benchmarks</li>
+          <li>Análisis interno Trafilea · 240 ads · página 16 framework</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Sample</h5>
+        <ul>
+          <li>BigSpy AdSpy — scrape primario</li>
+          <li>YouTube Shorts · Inglés · EE.UU. · 9:16</li>
+          <li>300 scrapeados · 100 visuales · 240 clasificados</li>
+          <li>17 ejemplos curados</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>© 2026 Trafilea · Uso interno</div>
+      <div>El blind spot de YouTube</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Filter ads
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    const f = pill.dataset.filter;
+    document.querySelectorAll('.ad-card').forEach(card => {
+      card.style.display = (f === 'all' || card.dataset.pattern === f) ? '' : 'none';
+    });
+  });
+});
+
+// Click ad-card to play
+document.querySelectorAll('.ad-card').forEach(card => {
+  const wrap = card.querySelector('.video-wrap');
+  const vid = card.querySelector('video');
+  if (!wrap || !vid) return;
+  wrap.addEventListener('click', () => {
+    if (card.classList.contains('playing')) {
+      if (vid.paused) { vid.play(); } else { vid.pause(); }
+    } else {
+      document.querySelectorAll('.ad-card.playing video').forEach(v => v.pause());
+      document.querySelectorAll('.ad-card.playing').forEach(c => c.classList.remove('playing'));
+      vid.muted = false; vid.controls = true;
+      card.classList.add('playing'); vid.play();
+    }
+  });
+});
+
+// Click organic-card video to play
+document.querySelectorAll('.organic-card.video-card .video-wrap').forEach(wrap => {
+  const vid = wrap.querySelector('video');
+  if (!vid) return;
+  wrap.addEventListener('click', () => {
+    if (wrap.classList.contains('playing')) {
+      if (vid.paused) { vid.play(); } else { vid.pause(); }
+    } else {
+      document.querySelectorAll('.organic-card .video-wrap.playing video').forEach(v => v.pause());
+      document.querySelectorAll('.organic-card .video-wrap.playing').forEach(w => w.classList.remove('playing'));
+      vid.muted = false; vid.controls = true;
+      wrap.classList.add('playing'); vid.play();
+    }
+  });
+});
+</script>
+</body>
+</html>
