@@ -3,874 +3,1789 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTube's blind spot — Competitive Analysis | Trafilea</title>
+<title>YouTube's blind spot · Competitive analysis · Trafilea</title>
+<meta name="description" content="Why YouTube Shorts behaves differently than Meta and TikTok, and Trafilea's bet to capture what the platform actually rewards.">
+<meta name="theme-color" content="#0A2038">
+<meta property="og:title" content="YouTube's blind spot · Competitive analysis · Trafilea">
+<meta property="og:description" content="Competitive analysis of paid Shorts in the US, the structural insight that explains the category, and the bet for Trafilea.">
+<meta property="og:type" content="article">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+/* ============================================================
+   YOUTUBE'S BLIND SPOT — Competitive Analysis
+   Visual system aligned to Trafilea brand
+   - Type:  Montserrat (display) + Lato (body)
+   - Color: Trafilea --primary #0A2038, coral #F05549
+============================================================ */
+
 :root {
-  --navy: #0A2540;
-  --navy-soft: #1E3A5F;
-  --ink: #0A2540;
-  --slate: #5A6A7E;
-  --line: #E5E9EE;
-  --bg: #FAFAFA;
-  --card: #FFFFFF;
-  --accent: #FF5A36;
-  --accent-soft: #FFE6DC;
-  --green: #2A9D8F;
-  --p1: #264653;
-  --p2: #2A9D8F;
-  --p3: #E9C46A;
-  --p4: #F4A261;
-  --shadow: 0 1px 3px rgba(10,37,64,0.06), 0 4px 12px rgba(10,37,64,0.04);
+  /* Trafilea palette (extracted from trafilea.com) */
+  --ink:        #07161A;   /* near-black, navy hue */
+  --navy:       #0A2038;   /* Trafilea --primary */
+  --navy-deep:  #051528;   /* darker for layered dark sections */
+  --paper:      #F7F9FC;   /* Trafilea --primary-light */
+  --paper-warm: #FAFAF7;   /* slightly warmer paper for rhythm */
+  --white:      #FFFFFF;
+  --slate:      #515C5E;   /* Trafilea --paragraph-gray */
+  --slate-2:    #8A9398;
+  --rule:       #E1E5EB;
+  --rule-soft:  #ECEFF3;
+
+  /* Accent */
+  --coral:      #F05549;   /* Trafilea coral */
+  --coral-deep: #B43A2D;
+  --coral-soft: #FBE7E2;
+
+  /* Type stacks */
+  --display: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --body:    'Lato', system-ui, -apple-system, sans-serif;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);   /* ease-out-quart */
+  --t-fast: 160ms;
+  --t-med:  280ms;
 }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 15px; line-height: 1.55; color: var(--ink); background: var(--bg);
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
-/* TOPBAR */
-header.topbar {
-  background: var(--navy); color: white; padding: 14px 0;
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
-}
-.topbar-inner { display: flex; align-items: center; justify-content: space-between; }
-.brand { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
-.brand .accent { color: var(--accent); }
-nav ul { list-style: none; display: flex; gap: 22px; }
-nav a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 13px; font-weight: 500; transition: color .15s; }
-nav a:hover { color: white; }
+img, svg, video { max-width: 100%; display: block; }
+a { color: inherit; }
 
-/* HERO */
-.hero {
-  background: var(--navy); color: white;
-  padding: 96px 0 80px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.hero .eyebrow {
-  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent); font-weight: 600; margin-bottom: 16px;
-}
-.hero h1 {
-  font-size: 56px; line-height: 1.05; font-weight: 600;
-  letter-spacing: -0.025em; margin-bottom: 24px; max-width: 960px;
-}
-.hero h1 .accent { color: var(--accent); font-style: italic; font-weight: 500; }
-.hero p.subtitle {
-  font-size: 19px; color: rgba(255,255,255,0.72);
-  max-width: 780px; margin-bottom: 40px; font-weight: 300;
-}
-.hero .meta {
-  display: flex; gap: 28px; align-items: center;
-  font-size: 12px; color: rgba(255,255,255,0.5);
-  letter-spacing: 0.05em; text-transform: uppercase;
-}
-.hero .meta strong { color: var(--accent); font-weight: 500; }
+::selection { background: var(--coral); color: var(--white); }
 
-/* SECTION */
-section.s { padding: 80px 0; border-bottom: 1px solid var(--line); }
-section.s.alt { background: var(--card); }
-section.s.dark { background: var(--navy); color: white; }
-.s-head {
-  margin-bottom: 48px; padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
-}
-section.s.dark .s-head { border-bottom-color: rgba(255,255,255,0.1); }
-.act-num {
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  font-weight: 700; color: var(--accent); margin-bottom: 10px;
-}
-.s-title {
-  font-size: 38px; font-weight: 600; letter-spacing: -0.022em;
-  color: var(--ink); line-height: 1.15;
-}
-section.s.dark .s-title { color: white; }
-.s-subtitle {
-  font-size: 18px; color: var(--slate);
-  margin-top: 14px; max-width: 820px; font-weight: 400; line-height: 1.55;
-}
-section.s.dark .s-subtitle { color: rgba(255,255,255,0.7); }
-
-/* ACT 1 — DIAGNOSIS */
-.diag-callout {
-  background: var(--accent-soft);
-  border-left: 4px solid var(--accent);
-  padding: 24px 28px; margin-bottom: 32px;
+/* Focus rings — visible, brand-colored, never removed */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
   border-radius: 2px;
 }
-.diag-callout .lbl {
-  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--accent); font-weight: 700; margin-bottom: 6px;
-}
-.diag-callout p { font-size: 16px; color: var(--ink); line-height: 1.5; }
-.diag-callout p strong { font-weight: 600; }
 
-table.diag-table {
-  width: 100%; border-collapse: collapse; margin: 24px 0;
-  background: white; box-shadow: var(--shadow);
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-table.diag-table th, table.diag-table td {
-  padding: 16px 18px; text-align: left;
-  border-bottom: 1px solid var(--line);
-  vertical-align: top;
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+.wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.wrap--narrow { max-width: 880px; }
+
+.section { padding: 96px 0; position: relative; }
+.section + .section { border-top: 1px solid var(--rule); }
+.section--dark {
+  background: var(--navy);
+  color: var(--white);
+  border-top: none !important;
 }
-table.diag-table th {
-  background: var(--navy); color: white;
-  font-weight: 600; font-size: 13px;
+.section--dark + .section { border-top: none !important; }
+.section--warm  { background: var(--paper-warm); }
+.section--white { background: var(--white); }
+.section--appendix { padding: 64px 0; background: var(--paper); }
+
+/* Section head — editorial, no boxed look */
+.s-head { margin-bottom: 56px; max-width: 880px; }
+.eyebrow {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 18px;
+  display: inline-block;
+}
+.section--dark .eyebrow { color: var(--coral); }
+.eyebrow--muted { color: var(--slate-2); }
+
+.s-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(32px, 5.2vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  max-width: 18ch;
+}
+.s-title .accent { color: var(--coral); font-style: normal; }
+.s-title.wide { max-width: 22ch; }
+.section--dark .s-title { color: var(--white); }
+.section--dark .s-title .accent { color: var(--coral); }
+
+.s-subtitle {
+  font-family: var(--body);
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--slate);
+  margin-top: 18px;
+  max-width: 760px;
+  font-weight: 400;
+}
+.section--dark .s-subtitle { color: rgba(255,255,255,0.72); }
+
+/* Generic text */
+p { line-height: 1.65; max-width: 70ch; }
+p.lede { font-size: 18px; line-height: 1.55; max-width: 64ch; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+.text-coral { color: var(--coral); }
+.text-slate { color: var(--slate); }
+
+/* ============================================================
+   TOPBAR
+============================================================ */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10, 32, 56, 0.96);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  color: var(--white);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0;
+}
+.brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.brand .sep { color: var(--coral); margin: 0 8px; }
+.brand .doc { font-weight: 500; color: rgba(255,255,255,0.65); letter-spacing: 0.04em; }
+
+.nav { display: flex; gap: 28px; align-items: center; }
+.nav a {
+  text-decoration: none;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.7);
+  transition: color var(--t-fast) var(--ease);
 }
-table.diag-table th:last-child { text-align: center; }
-table.diag-table td { font-size: 14px; line-height: 1.5; color: var(--ink); }
-table.diag-table td.dim { font-weight: 600; color: var(--ink); width: 18%; }
-table.diag-table td.winner { text-align: center; font-weight: 600; width: 14%; }
-table.diag-table td.winner.supplements { color: var(--p2); }
-table.diag-table td.winner.apparel { color: var(--accent); background: var(--accent-soft); }
-table.diag-table tr.storytelling-row { background: #FFF8F4; }
-table.diag-table tr.storytelling-row td { font-weight: 500; }
+.nav a:hover, .nav a:focus-visible { color: var(--white); }
 
-.scoreboard {
-  display: inline-grid; grid-template-columns: 1fr auto 1fr;
-  gap: 0; margin: 20px 0;
-  background: var(--card); border: 1px solid var(--line);
-  border-radius: 4px; overflow: hidden; max-width: 560px;
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  padding: 8px 12px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background var(--t-fast) var(--ease);
 }
-.scoreboard .side { padding: 14px 22px; text-align: center; color: var(--ink); }
-.scoreboard .side.lose .label, .scoreboard .side.win .label {
-  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 4px; color: var(--slate); font-weight: 600;
-}
-.scoreboard .side.lose .score, .scoreboard .side.win .score {
-  font-size: 26px; font-weight: 600; line-height: 1;
-  letter-spacing: -0.02em;
-}
-.scoreboard .side.win .score { color: var(--accent); }
-.scoreboard .side.lose .score { color: var(--slate); }
-.scoreboard .side .desc { font-size: 11px; margin-top: 4px; color: var(--slate); }
-.scoreboard .vs {
-  align-self: center;
-  font-size: 11px; color: var(--slate);
-  letter-spacing: 0.12em; padding: 0 8px;
-  border-left: 1px solid var(--line);
-  border-right: 1px solid var(--line);
-  background: var(--bg);
-  display: flex; align-items: center; padding: 14px 12px;
-}
+.nav-toggle:hover { background: rgba(255,255,255,0.08); }
 
-.reading {
-  background: var(--card);
-  border-left: 3px solid var(--ink);
-  padding: 24px 28px; margin-top: 24px;
+.nav-drawer {
+  position: fixed; inset: 0;
+  background: var(--navy);
+  display: none;
+  flex-direction: column;
+  padding: 96px 32px 32px;
+  z-index: 60;
 }
-.reading .lbl {
-  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-  font-weight: 700; color: var(--ink); margin-bottom: 8px;
-}
-.reading p { color: var(--ink); font-size: 16px; line-height: 1.6; }
-.reading p strong { color: var(--ink); font-weight: 600; }
-
-/* ACT 2 — INSIGHT */
-.platform-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: rgba(255,255,255,0.1);
-  margin: 32px 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
+.nav-drawer[data-open="true"] { display: flex; }
+.nav-drawer a {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  padding: 18px 0;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.platform-card {
+.nav-drawer-close {
+  position: absolute; top: 18px; right: 24px;
+  background: transparent; border: 0; color: var(--white);
+  font-size: 28px; cursor: pointer; line-height: 1;
+  padding: 8px;
+}
+
+/* ============================================================
+   HERO — cinematic, editorial. Heavy display type, coral as
+   protagonist (not just accent). Acts like an opening title card.
+============================================================ */
+.hero {
   background: var(--navy);
-  padding: 32px 28px;
+  color: var(--white);
+  padding: 140px 0 120px;
+  position: relative;
+  overflow: hidden;
 }
-.platform-card .name {
-  font-size: 14px; font-weight: 600; color: var(--accent);
-  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px;
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(240,85,73,0.12), transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(240,85,73,0.05), transparent 60%);
+  pointer-events: none;
 }
-.platform-card .mode {
-  font-size: 22px; font-weight: 500; color: white;
-  margin-bottom: 8px; letter-spacing: -0.01em;
+.hero-eyebrow {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 36px;
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+  align-items: center;
 }
-.platform-card .want {
-  font-size: 14px; color: rgba(255,255,255,0.65);
+.hero-eyebrow .dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--coral);
+  opacity: 0.6;
+}
+.hero-eyebrow .vol {
+  color: rgba(255,255,255,0.4);
+  font-weight: 500;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(42px, 7.4vw, 96px);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  max-width: none;
+  color: var(--white);
+  white-space: nowrap;     /* keep "YouTube's blind spot." on one line on desktop */
+}
+@media (max-width: 760px) {
+  .hero h1 { white-space: normal; line-height: 0.95; }
+}
+.hero h1 .accent {
+  color: var(--coral);
+  font-style: normal;
+}
+.hero h1 .quiet {
+  display: block;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  margin-top: 24px;
+  font-size: clamp(20px, 2.4vw, 32px);
+  letter-spacing: -0.018em;
+  line-height: 1.18;
+  max-width: 24ch;
+}
+.hero .subtitle {
+  font-size: 19px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.82);
+  max-width: 640px;
+  margin-top: 48px;
+  font-weight: 400;
+}
+.hero-meta {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+.hero-meta .item .label {
+  font-family: var(--display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+.hero-meta .item .val {
+  font-family: var(--body);
+  font-size: 14px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.45;
+}
+
+/* ============================================================
+   KPI BAND (Section 0) — scoreboard treatment.
+   No card chrome, no boxes. Numbers as headline. Coral on the
+   alert metric so it shouts before you finish scanning.
+============================================================ */
+.kpi-band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 56px;
+  margin: 16px 0 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.kpi {
+  position: relative;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.kpi .label {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate-2);
+}
+.kpi .num {
+  font-family: var(--display);
+  font-size: clamp(68px, 9vw, 132px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+  color: var(--navy);
+}
+.kpi .delta {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.5;
+  max-width: 32ch;
+}
+.kpi--alert .num { color: var(--coral); }
+.kpi--alert .delta strong { color: var(--coral-deep); font-weight: 700; }
+
+/* Chart wrapper */
+.chart-block {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 32px 28px 24px;
+  margin-bottom: 32px;
+}
+.chart-title {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 20px;
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 12px;
+}
+.chart-title .src {
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--slate-2);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.chart-block svg { width: 100%; height: auto; }
+.chart-foot {
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--slate-2);
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule-soft);
   font-style: italic;
 }
-.platform-card.youtube { border: 2px solid var(--accent); padding: 30px 26px; }
-.platform-card.youtube .mode { color: var(--accent); font-weight: 600; }
 
-.quote-block {
-  background: white; padding: 24px 28px;
-  border-left: 3px solid var(--accent);
-  margin: 20px 0; border-radius: 2px;
-  box-shadow: var(--shadow);
+/* ============================================================
+   CALLOUT — replaces side-stripe pattern with full coral-soft
+   block, eyebrow inside instead of stripe on the side
+============================================================ */
+.callout {
+  background: var(--coral-soft);
+  padding: 32px 36px;
+  margin: 28px 0;
+  max-width: 980px;
 }
-.quote-block .text {
-  font-size: 16px; line-height: 1.6;
-  color: var(--ink); font-style: italic;
-  margin-bottom: 12px;
+.callout .lbl {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
 }
-.quote-block .source {
-  font-size: 12px; color: var(--slate);
-  letter-spacing: 0.03em;
+.callout .lbl::before {
+  content: '';
+  width: 24px; height: 1.5px;
+  background: var(--coral-deep);
 }
-.quote-block .source strong { color: var(--ink); font-weight: 600; }
+.callout p {
+  font-size: 18.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: none;
+}
+.callout p .accent { color: var(--coral-deep); font-weight: 700; }
+.callout--dark p .accent { color: var(--coral); font-weight: 700; }
+.callout p + p { margin-top: 14px; }
+.callout--dark {
+  background: var(--ink);
+  color: var(--white);
+}
+.callout--dark .lbl { color: var(--coral); }
+.callout--dark .lbl::before { background: var(--coral); }
+.callout--dark p { color: rgba(255,255,255,0.92); }
+.callout--dark p strong { color: var(--coral); }
 
-.insight-conclusion {
-  background: var(--accent-soft);
-  padding: 24px 28px;
-  border-radius: 2px;
-  margin-top: 24px;
-  border-left: 4px solid var(--accent);
+/* Lift display — used for hero-stat callouts (Sephora, ROAS opportunity) */
+.lift-display {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: center;
+  padding: 36px 36px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  margin: 28px 0;
+  max-width: 980px;
 }
-.insight-conclusion p { font-size: 16px; color: var(--ink); line-height: 1.55; }
-.insight-conclusion p strong { font-weight: 600; }
+.lift-display .figure {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(56px, 7vw, 92px);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--coral);
+  white-space: nowrap;
+}
+.lift-display .meta .lbl {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral-deep);
+  margin-bottom: 10px;
+}
+.lift-display .meta p {
+  font-size: 16px; line-height: 1.55; color: var(--ink);
+  margin-bottom: 8px;
+}
+.lift-display .meta .small {
+  font-size: 13px; color: var(--slate); line-height: 1.5;
+}
 
-/* ACT 3 — THE BET */
-.bet-headline {
-  font-size: 24px; font-weight: 500; color: var(--ink);
-  line-height: 1.4; margin: 24px 0 36px; letter-spacing: -0.01em;
+/* ============================================================
+   DIAGNOSIS TABLE
+============================================================ */
+.diag-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-family: var(--body);
+  background: var(--white);
+  border: 1px solid var(--rule);
+}
+.diag-table th, .diag-table td {
+  padding: 18px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.diag-table tr:last-child td { border-bottom: none; }
+.diag-table th {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.diag-table th + th { text-align: center; }
+.diag-table td { font-size: 14px; line-height: 1.55; color: var(--ink); }
+.diag-table td.dim {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14px;
+  width: 24%;
+}
+.diag-table td.dim .sub {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--slate);
+  margin-top: 4px;
+  display: block;
+  letter-spacing: 0;
+}
+.diag-table td.cell-center { text-align: center; vertical-align: middle; }
+.diag-table .mark {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+}
+.diag-table .mark--win  { color: var(--coral); }
+.diag-table .mark--lose { color: #C2C9D2; }
+.diag-table tr.row-win { background: var(--coral-soft); }
+.diag-table tr.row-win td.dim,
+.diag-table tr.row-win td { color: var(--ink); }
+.diag-table td.winner {
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  width: 16%;
+}
+.diag-table td.winner--alt    { color: var(--slate); }
+.diag-table td.winner--apparel { color: var(--coral); }
+
+.summary-line {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  max-width: 820px;
+  margin: 36px 0 6px;
+}
+.summary-line strong.lose  { color: var(--slate-2); font-weight: 600; }
+.summary-line strong.win   { color: var(--coral); font-weight: 700; }
+.summary-line strong.stamp { color: var(--coral); font-weight: 700; }
+.summary-foot { font-size: 12px; color: var(--slate); }
+
+/* ============================================================
+   ACT 2 — PLATFORM CARDS
+============================================================ */
+.platforms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 40px 0 32px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.platform {
+  padding: 36px 32px;
+  background: transparent;
+  position: relative;
+}
+.platform + .platform { border-left: 1px solid rgba(255,255,255,0.12); }
+.platform .name {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 16px;
+}
+.platform .mode {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.platform .want {
+  font-family: var(--body);
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+.platform--feature {
+  background: var(--navy-deep);
+  position: relative;
+}
+.platform--feature::before {
+  content: '';
+  position: absolute; left: 0; right: 0; top: 0;
+  height: 3px;
+  background: var(--coral);
+}
+.platform--feature .name { color: var(--coral); }
+.platform--feature .mode { color: var(--white); }
+
+/* Quote — replaces border-left quote-block with editorial treatment */
+.pull-quote {
+  position: relative;
+  padding: 36px 0 28px 56px;
+  margin: 36px 0;
   max-width: 880px;
+}
+.pull-quote::before {
+  content: '"';
+  position: absolute;
+  left: 0; top: 8px;
+  font-family: var(--display);
+  font-size: 92px;
+  line-height: 0.8;
+  color: var(--coral);
+  font-weight: 700;
+}
+.pull-quote .text {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  font-style: normal;
+}
+.pull-quote .text em { font-style: italic; color: var(--coral); font-weight: 500; }
+.section--dark .pull-quote .text { color: rgba(255,255,255,0.94); }
+.pull-quote .source {
+  margin-top: 18px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+}
+.section--dark .pull-quote .source { color: rgba(255,255,255,0.55); }
+.pull-quote .source strong { color: var(--ink); }
+.section--dark .pull-quote .source strong { color: var(--white); }
+
+/* ============================================================
+   ACT 3 — BET (70/20/10 distribution)
+============================================================ */
+.bet-headline {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  max-width: 900px;
+  margin: 40px 0;
 }
 .bet-headline strong { font-weight: 700; }
 
-.distribution {
-  display: grid; grid-template-columns: 1fr;
-  gap: 16px; margin: 36px 0;
+.scope-note {
+  border: 1px dashed var(--rule);
+  padding: 16px 22px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--slate);
+  max-width: 880px;
+  background: var(--paper-warm);
+}
+.scope-note strong { color: var(--ink); font-weight: 600; }
+
+.anchor-table {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 28px 32px;
+  margin: 32px 0;
+  max-width: 980px;
+}
+.anchor-table .lbl {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 14px;
+}
+.anchor-table p { font-size: 14px; line-height: 1.6; margin-bottom: 18px; max-width: none; }
+.anchor-table table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.anchor-table th, .anchor-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+  font-family: var(--body);
+}
+.anchor-table th {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.anchor-table th:first-child, .anchor-table td:first-child { text-align: left; }
+.anchor-table tr.proposal td { background: var(--coral-soft); }
+.anchor-table tr.proposal td:first-child { font-weight: 700; color: var(--ink); }
+.anchor-table tr.proposal td { font-weight: 700; }
+.anchor-table tr.proposal td.coral { color: var(--coral); }
+.anchor-table .note {
+  font-size: 12px;
+  color: var(--slate);
+  margin-top: 14px;
+  line-height: 1.55;
+  max-width: none;
+}
+.anchor-table .note strong { color: var(--ink); }
+
+/* Distribution rows */
+.dist {
+  display: grid;
+  gap: 14px;
+  margin: 40px 0 36px;
 }
 .dist-row {
-  display: grid; grid-template-columns: 100px 1fr 200px;
-  align-items: center; padding: 24px 28px;
-  background: white; border: 1px solid var(--line);
-  border-radius: 6px; box-shadow: var(--shadow);
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 220px 1fr 200px;
+  align-items: center;
+  gap: 36px;
+  padding: 32px 32px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  position: relative;
 }
+.dist-row + .dist-row { margin-top: 0; }
 .dist-row .pct {
-  font-size: 56px; font-weight: 600; line-height: 1;
-  letter-spacing: -0.03em; color: var(--accent);
+  font-family: var(--display);
+  font-size: clamp(56px, 6.4vw, 84px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: var(--slate-2);
+  white-space: nowrap;
 }
-.dist-row.maintain .pct { color: var(--slate); }
-.dist-row.bet .pct { color: var(--accent); }
-.dist-row.cheap .pct { color: var(--p2); }
+.dist-row.is-bet   .pct { color: var(--coral); }
+.dist-row.is-cheap .pct { color: var(--navy); }
 .dist-row .body h4 {
-  font-size: 18px; font-weight: 600; margin-bottom: 6px;
-  letter-spacing: -0.01em;
-}
-.dist-row .body p { font-size: 14px; color: var(--slate); line-height: 1.5; }
-.dist-row .label {
-  font-size: 11px; color: var(--slate);
-  letter-spacing: 0.1em; text-transform: uppercase;
-  text-align: right;
-  padding-left: 24px; border-left: 1px solid var(--line);
-}
-.dist-row .label strong {
-  display: block; font-size: 14px; color: var(--ink);
-  font-weight: 600; margin-top: 4px;
-}
-
-.bet-frame {
-  background: var(--ink); color: white;
-  padding: 28px 32px; border-radius: 4px;
-  margin: 32px 0; max-width: 880px;
-}
-.bet-frame .lbl {
-  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--accent); font-weight: 700; margin-bottom: 10px;
-}
-.bet-frame p { font-size: 17px; line-height: 1.6; color: white; }
-.bet-frame p strong { color: var(--accent); font-weight: 600; }
-
-/* ACT 4 — ORGANIC */
-.organic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.organic-card {
-  padding: 28px; background: white;
-  border: 1px solid var(--line); border-radius: 4px;
-  box-shadow: var(--shadow);
-}
-.organic-card.video-card {
-  padding: 0;
-  display: grid; grid-template-columns: 200px 1fr;
-  overflow: hidden;
-}
-.organic-card.video-card .card-media {
-  background: var(--ink); position: relative;
-}
-.organic-card.video-card .card-media .video-wrap {
-  position: relative; width: 100%; height: 100%;
-  cursor: pointer; overflow: hidden;
-}
-.organic-card.video-card .card-media .video-wrap video {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-}
-.organic-card.video-card .card-media.dual {
-  display: grid; grid-template-rows: 1fr 1fr; gap: 2px;
-}
-.organic-card.video-card .card-body { padding: 24px 26px; }
-.organic-card .card-media .play-overlay {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(10,37,64,0.15); transition: background .15s;
-}
-.organic-card .card-media .play-overlay:hover { background: rgba(10,37,64,0.05); }
-.organic-card .card-media .play-icon {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: rgba(255,255,255,0.92);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.organic-card .card-media .play-icon::after {
-  content: ''; width: 0; height: 0;
-  border-left: 12px solid var(--ink);
-  border-top: 8px solid transparent; border-bottom: 8px solid transparent;
-  margin-left: 3px;
-}
-.organic-card .video-wrap.playing .play-overlay { display: none; }
-.organic-card .lbl {
-  font-size: 11px; color: var(--accent);
-  letter-spacing: 0.12em; text-transform: uppercase;
-  font-weight: 600; margin-bottom: 8px;
-}
-.organic-card .stat-line {
-  font-size: 11px; color: var(--slate);
-  letter-spacing: 0.04em; margin-bottom: 8px;
-  display: flex; gap: 12px; align-items: center;
-}
-.organic-card .stat-line .views { color: var(--accent); font-weight: 600; }
-.organic-card h4 {
-  font-size: 18px; font-weight: 600;
-  letter-spacing: -0.01em; margin-bottom: 12px;
-}
-.organic-card p { color: var(--slate); font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
-.organic-card .quote {
-  background: var(--bg); padding: 12px 14px;
-  border-left: 2px solid var(--accent);
-  font-size: 13px; font-style: italic;
-  color: var(--slate); margin-top: 12px; line-height: 1.5;
-}
-.organic-card .replicable {
-  margin-top: 16px; padding-top: 14px;
-  border-top: 1px solid var(--line);
-  font-size: 13px; color: var(--ink);
-}
-.organic-card .replicable strong {
-  display: block; margin-bottom: 8px;
-  font-size: 11px; color: var(--accent);
-  letter-spacing: 0.08em; text-transform: uppercase;
-}
-.organic-card .replicable ul { list-style: none; padding-left: 0; }
-.organic-card .replicable li {
-  padding-left: 16px; position: relative;
-  margin-bottom: 6px; line-height: 1.45;
-  color: var(--slate); font-size: 13px;
-}
-.organic-card .replicable li::before {
-  content: '→'; position: absolute; left: 0; color: var(--accent);
-}
-
-/* APPENDIX */
-.appendix-marker {
-  text-align: center; padding: 64px 0 32px;
-  font-size: 12px; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--slate);
+  font-family: var(--display);
+  font-size: 19px;
   font-weight: 600;
+  letter-spacing: -0.012em;
+  margin-bottom: 8px;
 }
-.appendix-marker::before, .appendix-marker::after {
-  content: ''; display: inline-block;
-  width: 60px; height: 1px;
-  background: var(--line); vertical-align: middle;
-  margin: 0 16px;
+.dist-row .body p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--slate);
+  max-width: 56ch;
 }
-.app-section { padding: 56px 0; border-bottom: 1px solid var(--line); }
-.app-head { margin-bottom: 32px; }
-.app-head .lbl {
-  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--slate); font-weight: 600; margin-bottom: 6px;
+.dist-row .body ul {
+  list-style: none;
+  margin-top: 12px;
+  padding: 0;
 }
-.app-head h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.015em; }
-
-/* DONUT (4 patterns) */
-.pattern-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
-.donut-wrap { display: flex; justify-content: center; }
-.legend { display: flex; flex-direction: column; gap: 14px; }
-.legend-item {
-  display: grid; grid-template-columns: auto 1fr auto;
-  gap: 16px; align-items: baseline;
-  padding: 12px 0; border-bottom: 1px solid var(--line);
+.dist-row .body ul li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--slate);
+  margin-bottom: 6px;
 }
-.dot { width: 12px; height: 12px; border-radius: 2px; align-self: center; }
-.legend-item .name { font-weight: 500; font-size: 14px; }
-.legend-item .name .desc { display: block; font-size: 12px; color: var(--slate); font-weight: 400; margin-top: 2px; }
-.legend-item .pct { font-weight: 600; font-size: 17px; color: var(--ink); }
-
-/* TABLA PLATAFORMAS */
-table.platforms {
-  width: 100%; border-collapse: collapse;
-  background: white; box-shadow: var(--shadow);
-  margin: 16px 0;
+.dist-row .body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.7em;
+  width: 10px; height: 1.5px;
+  background: var(--coral);
 }
-table.platforms th, table.platforms td {
-  padding: 12px 14px; text-align: left;
-  border-bottom: 1px solid var(--line);
-  font-size: 13px; line-height: 1.4;
-  vertical-align: top;
+.dist-row .body ul li strong { color: var(--ink); font-weight: 700; }
+.dist-row .status {
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--slate);
+  text-align: right;
+  padding-left: 24px;
+  border-left: 1px solid var(--rule);
 }
-table.platforms th {
-  background: var(--navy); color: white;
-  font-weight: 600; font-size: 12px;
+.dist-row .status strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 6px;
   letter-spacing: 0.04em;
 }
-table.platforms td.dim { font-weight: 600; width: 18%; }
-table.platforms td.youtube { background: var(--accent-soft); font-weight: 500; }
 
-/* AD LIBRARY */
-.filter-bar { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+/* ============================================================
+   ACT 4 — ORGANIC PROOF CARDS
+============================================================ */
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+.proof {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.proof.has-video { padding: 0; }
+.proof:not(.has-video) { padding: 28px 30px; }
+.proof.has-video .video-col {
+  background: var(--ink);
+  position: relative;
+  aspect-ratio: 9/16;
+  max-height: 280px;
+}
+.proof.has-video.layout-side { display: grid; grid-template-columns: 200px 1fr; }
+.proof.has-video.layout-side .video-col {
+  aspect-ratio: auto;
+  max-height: none;
+  height: 100%;
+}
+.proof.has-video.layout-dual .video-col {
+  display: grid; grid-template-rows: 1fr 1fr; gap: 2px;
+  aspect-ratio: auto;
+}
+.proof.has-video .body { padding: 26px 30px; }
+.video-wrap {
+  position: relative;
+  width: 100%; height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--ink);
+}
+.video-wrap video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.play-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(7,22,26,0.25);
+  transition: background var(--t-fast) var(--ease);
+}
+.video-wrap:hover .play-overlay,
+.video-wrap:focus-visible .play-overlay { background: rgba(7,22,26,0.1); }
+.play-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.play-icon::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 12px solid var(--ink);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-left: 3px;
+}
+.video-wrap.playing .play-overlay { display: none; }
+
+.proof .play-label {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 10px;
+}
+.proof .stat-line {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  margin-bottom: 10px;
+  display: flex; gap: 12px; align-items: center;
+}
+.proof .stat-line .views { color: var(--coral); font-weight: 700; }
+.proof h4 {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+.proof p { font-size: 14.5px; color: var(--slate); line-height: 1.6; margin-bottom: 12px; max-width: none; }
+.proof p strong { color: var(--ink); }
+
+/* Pull quote inside proof — no side stripe */
+.proof .inline-quote {
+  margin-top: 14px;
+  padding: 14px 0 14px 18px;
+  border-left: 0;
+  font-family: var(--body);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--slate);
+  position: relative;
+}
+.proof .inline-quote::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 4px; bottom: 4px;
+  width: 2px;
+  background: var(--coral);
+  /* not a stripe on a card — stripe IS the quote indicator, that's legitimate */
+}
+.proof .replicable {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+.proof .replicable .lbl {
+  display: block;
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 10px;
+}
+.proof .replicable ul { list-style: none; padding: 0; }
+.proof .replicable li {
+  padding-left: 20px;
+  position: relative;
+  font-size: 13.5px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.proof .replicable li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--coral);
+  font-weight: 700;
+}
+
+/* ============================================================
+   APPENDIX
+============================================================ */
+.appendix-divider {
+  text-align: center;
+  padding: 72px 0 32px;
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--slate);
+  font-weight: 600;
+  background: var(--paper);
+}
+.appendix-divider::before, .appendix-divider::after {
+  content: '';
+  display: inline-block;
+  width: 64px; height: 1px;
+  background: var(--rule);
+  vertical-align: middle;
+  margin: 0 18px;
+}
+.app-head { margin-bottom: 32px; max-width: 760px; }
+.app-head .lbl {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+.app-head h3 {
+  font-family: var(--display);
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.app-head p {
+  font-size: 15px;
+  color: var(--slate);
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+/* Donut + legend */
+.pattern-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 56px;
+  align-items: center;
+  margin-top: 24px;
+}
+.donut-wrap { display: flex; justify-content: center; }
+.donut-wrap svg text { font-family: var(--display); }
+.legend { display: flex; flex-direction: column; gap: 4px; }
+.legend-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.legend-item:last-child { border-bottom: 0; }
+.legend .dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  align-self: center;
+}
+.legend .name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+}
+.legend .desc {
+  display: block;
+  font-family: var(--body);
+  font-size: 12.5px;
+  color: var(--slate);
+  font-weight: 400;
+  margin-top: 3px;
+  letter-spacing: 0;
+}
+.legend .pct {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+/* Platforms table */
+.platforms-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  margin: 20px 0;
+  font-family: var(--body);
+}
+.platforms-table th, .platforms-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+  line-height: 1.5;
+  vertical-align: top;
+}
+.platforms-table tr:last-child td { border-bottom: 0; }
+.platforms-table th {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.platforms-table th.yt {
+  background: var(--coral);
+  color: var(--white);
+}
+.platforms-table td.dim {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 13px;
+  width: 18%;
+  color: var(--ink);
+}
+.platforms-table td.yt { background: var(--coral-soft); font-weight: 500; color: var(--ink); }
+
+/* Ad library */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 28px;
+  flex-wrap: wrap;
+}
 .filter-pill {
-  background: white; border: 1px solid var(--line);
-  padding: 7px 14px; border-radius: 18px;
-  font-size: 12px; cursor: pointer; font-family: inherit;
-  transition: all .15s; color: var(--slate);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 8px 16px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease);
+  border-radius: 100px;
 }
 .filter-pill:hover { border-color: var(--ink); color: var(--ink); }
-.filter-pill.active { background: var(--ink); color: white; border-color: var(--ink); }
-.ads-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.filter-pill[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+.ads-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
 .ad-card {
-  background: white; border-radius: 6px;
-  overflow: hidden; box-shadow: var(--shadow);
-  transition: transform .2s, box-shadow .2s;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  overflow: hidden;
   display: flex; flex-direction: column;
+  transition: transform var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
 .ad-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(10,37,64,0.08);
+  border-color: var(--slate-2);
 }
 .ad-card .video-wrap {
-  position: relative; aspect-ratio: 9/16;
-  background: var(--ink); cursor: pointer; overflow: hidden;
-}
-.ad-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ad-card .play-overlay {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(10,37,64,0.15); transition: background .15s;
-}
-.ad-card .play-overlay:hover { background: rgba(10,37,64,0.05); }
-.ad-card .play-icon {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: rgba(255,255,255,0.92);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.ad-card .play-icon::after {
-  content: ''; width: 0; height: 0;
-  border-left: 12px solid var(--ink);
-  border-top: 8px solid transparent; border-bottom: 8px solid transparent;
-  margin-left: 3px;
+  aspect-ratio: 9/16;
 }
 .ad-card.playing .play-overlay { display: none; }
-.ad-card .info { padding: 12px 14px; border-top: 1px solid var(--line); }
+.ad-card .info { padding: 12px 14px; border-top: 1px solid var(--rule-soft); }
 .ad-card .brand-row {
-  display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  margin-bottom: 4px;
 }
-.ad-card .brand-name { font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.ad-card .brand-name {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
 .ad-card .pattern-tag {
-  font-size: 9px; font-weight: 600;
-  padding: 2px 7px; border-radius: 3px;
-  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+  font-family: var(--display);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 100px;
 }
-.tag-p1 { background: #DBE7E9; color: var(--p1); }
-.tag-p2 { background: #D8EFE9; color: #1E7A6F; }
-.tag-p3 { background: #FBF1D6; color: #8A7327; }
-.tag-p4 { background: #FCE3D0; color: #B45A2A; }
-.tag-p5 { background: #FAD7CC; color: #B0432C; }
-.ad-card .why { font-size: 11px; color: var(--slate); line-height: 1.4; }
+.tag-p1 { background: rgba(10,32,56,0.08);   color: var(--navy); }
+.tag-p2 { background: rgba(10,32,56,0.14);   color: var(--ink); }
+.tag-p3 { background: rgba(240,85,73,0.12);  color: var(--coral-deep); }
+.tag-p4 { background: rgba(240,85,73,0.18);  color: var(--coral-deep); }
+.tag-p5 { background: rgba(81,92,94,0.12);   color: var(--slate); }
+.ad-card .why {
+  font-size: 11.5px;
+  color: var(--slate);
+  line-height: 1.4;
+}
 
-/* FOOTER */
-footer {
-  background: var(--navy); color: rgba(255,255,255,0.6);
-  padding: 56px 0 32px; font-size: 13px;
+/* ============================================================
+   FOOTER
+============================================================ */
+.foot {
+  background: var(--ink);
+  color: rgba(255,255,255,0.62);
+  padding: 64px 0 32px;
+  font-size: 13px;
 }
-footer .top {
-  display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 32px; padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+.foot-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 36px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-footer h5 { color: white; font-size: 12px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
-footer ul { list-style: none; }
-footer ul li { margin-bottom: 6px; font-size: 12px; }
-footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color .15s; }
-footer a:hover { color: white; }
-footer .method-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 6px; margin-top: 8px;
+.foot h5 {
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
 }
-footer .method-grid .m-item {
-  font-size: 11px; color: rgba(255,255,255,0.55);
+.foot ul { list-style: none; padding: 0; }
+.foot ul li { margin-bottom: 8px; line-height: 1.55; font-size: 12.5px; }
+.foot a {
+  color: rgba(255,255,255,0.62);
+  text-decoration: none;
+  transition: color var(--t-fast) var(--ease);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
 }
-footer .method-grid .m-item span { color: white; font-weight: 500; }
-footer .bottom {
+.foot a:hover, .foot a:focus-visible { color: var(--white); border-color: var(--white); }
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 18px;
+  margin-top: 10px;
+}
+.method-grid .m {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.45;
+}
+.method-grid .m span {
+  color: var(--white);
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.foot-bottom {
   display: flex; justify-content: space-between;
-  font-size: 11px; color: rgba(255,255,255,0.4);
+  align-items: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--display);
+  font-weight: 500;
 }
 
-@media (max-width: 900px) {
-  .container { padding: 0 24px; }
-  .hero h1 { font-size: 36px; }
-  .hero { padding: 64px 0 56px; }
-  .pattern-grid, .platform-grid, .organic-grid {
-    grid-template-columns: 1fr; gap: 24px;
-  }
-  .scoreboard { grid-template-columns: 1fr; }
-  .dist-row { grid-template-columns: 70px 1fr; }
-  .dist-row .label { display: none; }
-  .ads-grid { grid-template-columns: repeat(2, 1fr); }
-  .s-title { font-size: 28px; }
-  table.diag-table th, table.diag-table td { padding: 10px 12px; font-size: 12px; }
-  table.platforms th, table.platforms td { padding: 8px 10px; font-size: 11px; }
-  nav ul { display: none; }
-  footer .top { grid-template-columns: 1fr; }
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1024px) {
+  .ads-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+@media (max-width: 880px) {
+  .wrap { padding: 0 24px; }
+  .section { padding: 72px 0; }
+  .nav { display: none; }
+  .nav-toggle { display: inline-flex; align-items: center; }
+  .hero { padding: 88px 0 72px; }
+  .hero-meta { gap: 24px; padding-top: 24px; margin-top: 40px; }
+
+  .kpi-band { grid-template-columns: 1fr; }
+  .kpi + .kpi { border-left: 0; border-top: 1px solid var(--rule); }
+
+  .platforms { grid-template-columns: 1fr; }
+  .platform + .platform { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+
+  .dist-row { grid-template-columns: 90px 1fr; gap: 20px; padding: 24px; }
+  .dist-row .status { display: none; }
+
+  .proof-grid { grid-template-columns: 1fr; }
+  .proof.has-video.layout-side { grid-template-columns: 1fr; }
+  .proof.has-video.layout-side .video-col {
+    aspect-ratio: 9/16; height: auto; max-height: 360px;
+  }
+
+  .lift-display { grid-template-columns: 1fr; gap: 18px; padding: 28px; }
+  .lift-display .figure { font-size: clamp(48px, 14vw, 72px); }
+
+  .pattern-grid { grid-template-columns: 1fr; gap: 28px; }
+
+  .ads-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .diag-table th, .diag-table td { padding: 12px 14px; font-size: 12.5px; }
+  .platforms-table th, .platforms-table td { padding: 10px 12px; font-size: 11.5px; }
+
+  .foot-top { grid-template-columns: 1fr; gap: 32px; }
+  .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .ads-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .wrap { padding: 0 20px; }
+  .hero h1 { font-size: clamp(32px, 9vw, 44px); }
+  .pull-quote { padding-left: 36px; }
+  .pull-quote::before { font-size: 64px; }
+}
+
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="container topbar-inner">
-    <div class="brand">Trafilea <span class="accent">·</span> Competitive Analysis</div>
-    <nav>
-      <ul>
-        <li><a href="#contexto">Context</a></li>
-        <li><a href="#acto1">Diagnosis</a></li>
-        <li><a href="#acto2">Insight</a></li>
-        <li><a href="#acto3">The bet</a></li>
-        <li><a href="#acto4">The proof</a></li>
-        <li><a href="#apendice">Appendix</a></li>
-      </ul>
+<!-- =========================================================
+     TOPBAR
+========================================================== -->
+<header class="topbar" role="banner">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      Trafilea<span class="sep">·</span><span class="doc">Competitive analysis</span>
+    </div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#context">Context</a>
+      <a href="#act-1">Diagnosis</a>
+      <a href="#act-2">Insight</a>
+      <a href="#act-3">The bet</a>
+      <a href="#act-4">The proof</a>
+      <a href="#appendix">Appendix</a>
     </nav>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-drawer">
+      Menu
+    </button>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="eyebrow">YouTube Paid Shorts · Competitive Analysis · Mayo 2026</div>
-    <h1>YouTube's blind spot <span class="accent">— what makes the category different and Trafilea's bet.</span></h1>
-    <p class="subtitle">YouTube Shorts behaves differently than Meta and TikTok. Competitive analysis of paid Shorts in the US, the structural insight that explains the category's behavior, and the concrete bet for Trafilea to capture what YouTube specifically rewards.</p>
-    <div class="meta">
-      <span><strong>Sample</strong> · 240 ads classified · 100 visually reviewed</span>
-      <span><strong>Source</strong> · BigSpy AdSpy · YouTube Shorts · English · US</span>
+<div class="nav-drawer" id="nav-drawer" data-open="false" role="dialog" aria-modal="true" aria-label="Section navigation">
+  <button class="nav-drawer-close" aria-label="Close navigation">&times;</button>
+  <a href="#context">Context</a>
+  <a href="#act-1">Diagnosis</a>
+  <a href="#act-2">Insight</a>
+  <a href="#act-3">The bet</a>
+  <a href="#act-4">The proof</a>
+  <a href="#appendix">Appendix</a>
+</div>
+
+<!-- =========================================================
+     HERO
+========================================================== -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="hero-eyebrow">
+      <span class="vol">Board memo · Vol. 01</span>
+      <span class="dot"></span>
+      <span>YouTube paid Shorts</span>
+      <span class="dot"></span>
+      <span>May 2026</span>
+    </div>
+    <h1 id="hero-title">
+      YouTube's <span class="accent">blind</span> spot.
+      <span class="quiet">What makes the category different. And Trafilea's bet.</span>
+    </h1>
+    <p class="subtitle">
+      YouTube Shorts behaves differently than Meta and TikTok. A competitive analysis of paid Shorts in the US, the structural insight that explains the category's behavior, and the concrete bet for Trafilea to capture what YouTube specifically rewards.
+    </p>
+    <div class="hero-meta">
+      <div class="item">
+        <div class="label">Sample</div>
+        <div class="val">240 ads classified · 100 visually reviewed</div>
+      </div>
+      <div class="item">
+        <div class="label">Source</div>
+        <div class="val">BigSpy AdSpy · YouTube Shorts · English · US</div>
+      </div>
+      <div class="item">
+        <div class="label">For</div>
+        <div class="val">Internal board review</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 0 — INTERNAL CONTEXT -->
-<section class="s" id="contexto">
-  <div class="container">
+<!-- =========================================================
+     SECTION 0 — INTERNAL CONTEXT
+========================================================== -->
+<section class="section section--white" id="context" aria-labelledby="context-title">
+  <div class="wrap">
     <div class="s-head">
-      <div class="act-num">Section 0 · Internal context</div>
-      <h2 class="s-title">Trafilea on YouTube today</h2>
+      <div class="eyebrow eyebrow--muted">Section 0 · Internal context</div>
+      <h2 class="s-title" id="context-title">Trafilea on YouTube today</h2>
       <p class="s-subtitle">Four months of sustained investment in YouTube Shorts. Rising spend curve, ROAS stagnant, CPMs climbing.</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px;">
-      <div style="background: white; padding: 24px; border-left: 4px solid var(--accent); box-shadow: var(--shadow);">
-        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 8px;">Monthly spend · Apr 2026</div>
-        <div style="font-size: 38px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; line-height: 1;">$130K</div>
-        <div style="font-size: 12px; color: var(--slate); margin-top: 8px;">+37% vs January · $95K → $130K</div>
+    <div class="kpi-band" role="list">
+      <div class="kpi" role="listitem">
+        <div class="label">Monthly spend, Apr 2026</div>
+        <div class="num">$130K</div>
+        <div class="delta">+37% vs January. $95K → $130K, climbing each month.</div>
       </div>
-      <div style="background: white; padding: 24px; border-left: 4px solid var(--accent); box-shadow: var(--shadow);">
-        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 8px;">ROAS · Abr 2026</div>
-        <div style="font-size: 38px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; line-height: 1;">0.78</div>
-        <div style="font-size: 12px; color: var(--slate); margin-top: 8px;">Has not exceeded 1.0 in 4 months</div>
+      <div class="kpi kpi--alert" role="listitem">
+        <div class="label">ROAS, Apr 2026</div>
+        <div class="num">0.78</div>
+        <div class="delta"><strong>Has not exceeded 1.0</strong> in four straight months.</div>
       </div>
-      <div style="background: white; padding: 24px; border-left: 4px solid var(--accent); box-shadow: var(--shadow);">
-        <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 8px;">CPM · 4 months</div>
-        <div style="font-size: 38px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; line-height: 1;">+30%</div>
-        <div style="font-size: 12px; color: var(--slate); margin-top: 8px;">$10 → $13 · competition rising</div>
+      <div class="kpi" role="listitem">
+        <div class="label">CPM, last 4 months</div>
+        <div class="num">+30%</div>
+        <div class="delta">$10 → $13. Competition is rising in the same window we're investing.</div>
       </div>
     </div>
 
-    <div style="background: white; padding: 24px 28px; border-radius: 4px; box-shadow: var(--shadow); margin-bottom: 24px;">
-      <div style="font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 16px;">Monthly spend + ROAS · YouTube Shorts · Jan-Apr 2026</div>
-      <svg viewBox="0 0 700 340" width="100%" style="max-width: 720px; display: block;" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#E5E9EE" stroke-dasharray="2,4">
-          <line x1="80" y1="60" x2="620" y2="60"/>
-          <line x1="80" y1="110" x2="620" y2="110"/>
-          <line x1="80" y1="160" x2="620" y2="160"/>
-          <line x1="80" y1="210" x2="620" y2="210"/>
+    <div class="chart-block">
+      <div class="chart-title">
+        <span>Monthly spend &amp; ROAS · YouTube Shorts · Jan–Apr 2026</span>
+        <span class="src">Internal Ad Creatives Analytics · Shapermint US</span>
+      </div>
+      <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Monthly spend rising from $95K in January to $130K in April. ROAS stayed between 0.75 and 0.85 across all four months, never crossing the 1.0 breakeven line.">
+        <!--
+          Plot area: x 80..640 (560px), y 40..240 (200px)
+          Spend axis (left):   0..200K mapped to y 240..40   (1K = 1px)
+          ROAS axis (right):   0..1.0 mapped to y 240..40    (0.1 = 20px)
+        -->
+
+        <!-- Axis title labels -->
+        <text x="80" y="28" font-family="Montserrat" font-size="9" font-weight="700" letter-spacing="2" fill="#515C5E">SPEND ($K)</text>
+        <text x="640" y="28" font-family="Montserrat" font-size="9" font-weight="700" letter-spacing="2" text-anchor="end" fill="#F05549">ROAS</text>
+
+        <!-- Gridlines -->
+        <g stroke="#E1E5EB" stroke-width="1">
+          <line x1="80" y1="40"  x2="640" y2="40"/>
+          <line x1="80" y1="80"  x2="640" y2="80"/>
+          <line x1="80" y1="120" x2="640" y2="120"/>
+          <line x1="80" y1="160" x2="640" y2="160"/>
+          <line x1="80" y1="200" x2="640" y2="200"/>
+          <line x1="80" y1="240" x2="640" y2="240"/>
         </g>
-        <text x="80" y="48" fill="#0A2540" font-size="10" font-weight="600" letter-spacing="1">SPEND ($K)</text>
-        <text x="65" y="64" text-anchor="end" fill="#5A6A7E" font-size="10">$150</text>
-        <text x="65" y="114" text-anchor="end" fill="#5A6A7E" font-size="10">$112</text>
-        <text x="65" y="164" text-anchor="end" fill="#5A6A7E" font-size="10">$75</text>
-        <text x="65" y="214" text-anchor="end" fill="#5A6A7E" font-size="10">$37</text>
-        <text x="65" y="264" text-anchor="end" fill="#5A6A7E" font-size="10">$0</text>
-        <text x="635" y="48" fill="#FF5A36" font-size="10" font-weight="600" letter-spacing="1">ROAS</text>
-        <text x="635" y="64" text-anchor="start" fill="#FF5A36" font-size="10">1.0</text>
-        <text x="635" y="114" text-anchor="start" fill="#FF5A36" font-size="10">0.75</text>
-        <text x="635" y="164" text-anchor="start" fill="#FF5A36" font-size="10">0.50</text>
-        <text x="635" y="214" text-anchor="start" fill="#FF5A36" font-size="10">0.25</text>
 
-        <line x1="80" y1="60" x2="620" y2="60" stroke="#FF5A36" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+        <!-- Y-axis left (spend) ticks: $0 .. $200K -->
+        <g font-family="Montserrat" font-size="10" fill="#8A9398" font-weight="500">
+          <text x="72" y="44"  text-anchor="end">200</text>
+          <text x="72" y="84"  text-anchor="end">160</text>
+          <text x="72" y="124" text-anchor="end">120</text>
+          <text x="72" y="164" text-anchor="end">80</text>
+          <text x="72" y="204" text-anchor="end">40</text>
+          <text x="72" y="244" text-anchor="end">0</text>
+        </g>
 
-        <rect x="112" y="133" width="70" height="127" fill="#0A2540" opacity="0.7" rx="2"/>
-        <rect x="247" y="113" width="70" height="147" fill="#0A2540" opacity="0.75" rx="2"/>
-        <rect x="382" y="107" width="70" height="153" fill="#0A2540" opacity="0.8" rx="2"/>
-        <rect x="517" y="87" width="70" height="173" fill="#0A2540" opacity="0.9" rx="2"/>
+        <!-- Y-axis right (ROAS) ticks: 0 .. 1.0 -->
+        <g font-family="Montserrat" font-size="10" fill="#F05549" font-weight="600">
+          <text x="648" y="44"  text-anchor="start">1.0</text>
+          <text x="648" y="84"  text-anchor="start">0.8</text>
+          <text x="648" y="124" text-anchor="start">0.6</text>
+          <text x="648" y="164" text-anchor="start">0.4</text>
+          <text x="648" y="204" text-anchor="start">0.2</text>
+          <text x="648" y="244" text-anchor="start">0</text>
+        </g>
 
-        <text x="147" y="126" text-anchor="middle" fill="#0A2540" font-size="12" font-weight="600">$95K</text>
-        <text x="282" y="106" text-anchor="middle" fill="#0A2540" font-size="12" font-weight="600">$110K</text>
-        <text x="417" y="100" text-anchor="middle" fill="#0A2540" font-size="12" font-weight="600">$115K</text>
-        <text x="552" y="80" text-anchor="middle" fill="#0A2540" font-size="13" font-weight="700">$130K</text>
+        <!-- Breakeven line (ROAS = 1.0 → y = 40) -->
+        <line x1="80" y1="40" x2="640" y2="40" stroke="#F05549" stroke-width="1.25" stroke-dasharray="5,4" opacity="0.65"/>
+        <text x="640" y="36" text-anchor="end" font-family="Lato" font-size="10" font-style="italic" fill="#F05549" opacity="0.95">Breakeven · ROAS = 1.0</text>
 
-        <polyline points="147,90 282,110 417,90 552,104" fill="none" stroke="#FF5A36" stroke-width="2.5"/>
-        <circle cx="147" cy="90" r="5" fill="#FF5A36" stroke="white" stroke-width="2"/>
-        <circle cx="282" cy="110" r="5" fill="#FF5A36" stroke="white" stroke-width="2"/>
-        <circle cx="417" cy="90" r="5" fill="#FF5A36" stroke="white" stroke-width="2"/>
-        <circle cx="552" cy="104" r="6" fill="#FF5A36" stroke="white" stroke-width="2"/>
+        <!--
+          Bars (spend, x centers 150 / 290 / 430 / 570, width 80):
+            95K  → bar top y=145
+            110K → bar top y=130
+            115K → bar top y=125
+            130K → bar top y=110
+        -->
+        <g fill="#0A2038">
+          <rect x="110" y="145" width="80" height="95"/>
+          <rect x="250" y="130" width="80" height="110"/>
+          <rect x="390" y="125" width="80" height="115"/>
+          <rect x="530" y="110" width="80" height="130"/>
+        </g>
 
-        <text x="147" y="82" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.85</text>
-        <text x="282" y="125" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.75</text>
-        <text x="417" y="82" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.85</text>
-        <text x="552" y="96" text-anchor="middle" fill="#FF5A36" font-size="11" font-weight="600">0.78</text>
+        <!-- Spend value labels INSIDE each bar (white, near top) -->
+        <g font-family="Montserrat" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+          <text x="150" y="168">$95K</text>
+          <text x="290" y="153">$110K</text>
+          <text x="430" y="148">$115K</text>
+          <text x="570" y="133">$130K</text>
+        </g>
 
-        <line x1="80" y1="260" x2="620" y2="260" stroke="#0A2540" stroke-width="1.5"/>
-        <text x="147" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">January</text>
-        <text x="282" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">February</text>
-        <text x="417" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">March</text>
-        <text x="552" y="282" text-anchor="middle" fill="#5A6A7E" font-size="12">April</text>
+        <!--
+          ROAS line (over bars, well above bar tops thanks to 0..1.0 scale):
+            0.85 → y=70
+            0.75 → y=90
+            0.85 → y=70
+            0.78 → y=84
+        -->
+        <polyline points="150,70 290,90 430,70 570,84"
+          fill="none" stroke="#F05549" stroke-width="2.5" stroke-linecap="round"/>
 
-        <rect x="80" y="312" width="14" height="14" fill="#0A2540" opacity="0.75"/>
-        <text x="102" y="324" fill="#5A6A7E" font-size="12">Monthly spend</text>
-        <line x1="220" y1="319" x2="244" y2="319" stroke="#FF5A36" stroke-width="2.5"/>
-        <circle cx="232" cy="319" r="4" fill="#FF5A36"/>
-        <text x="252" y="324" fill="#5A6A7E" font-size="12">ROAS</text>
-        <line x1="350" y1="319" x2="374" y2="319" stroke="#FF5A36" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
-        <text x="382" y="324" fill="#5A6A7E" font-size="11" font-style="italic">Breakeven (ROAS = 1.0)</text>
+        <!-- ROAS dots -->
+        <g>
+          <circle cx="150" cy="70" r="5" fill="#F05549" stroke="#FFFFFF" stroke-width="2"/>
+          <circle cx="290" cy="90" r="5" fill="#F05549" stroke="#FFFFFF" stroke-width="2"/>
+          <circle cx="430" cy="70" r="5" fill="#F05549" stroke="#FFFFFF" stroke-width="2"/>
+          <circle cx="570" cy="84" r="6" fill="#F05549" stroke="#FFFFFF" stroke-width="2.5"/>
+        </g>
+
+        <!-- ROAS value labels (above each dot, no collision with bars or breakeven) -->
+        <g font-family="Montserrat" font-size="11" font-weight="700" fill="#F05549" text-anchor="middle">
+          <text x="150" y="60">0.85</text>
+          <text x="290" y="106">0.75</text>
+          <text x="430" y="60">0.85</text>
+          <text x="570" y="74">0.78</text>
+        </g>
+
+        <!-- X-axis baseline -->
+        <line x1="80" y1="240" x2="640" y2="240" stroke="#0A2038" stroke-width="1.5"/>
+
+        <!-- X-axis month labels -->
+        <g font-family="Lato" font-size="12" fill="#515C5E" text-anchor="middle">
+          <text x="150" y="262">January</text>
+          <text x="290" y="262">February</text>
+          <text x="430" y="262">March</text>
+          <text x="570" y="262">April</text>
+        </g>
+
+        <!-- Legend -->
+        <g transform="translate(80, 300)" font-family="Lato" font-size="12" fill="#515C5E">
+          <rect x="0" y="-9" width="14" height="12" fill="#0A2038"/>
+          <text x="22" y="0">Monthly spend</text>
+
+          <line x1="160" y1="-3" x2="190" y2="-3" stroke="#F05549" stroke-width="2.5"/>
+          <circle cx="175" cy="-3" r="4" fill="#F05549" stroke="#FFFFFF" stroke-width="1.5"/>
+          <text x="200" y="0">ROAS</text>
+
+          <line x1="270" y1="-3" x2="298" y2="-3" stroke="#F05549" stroke-width="1.25" stroke-dasharray="4,3" opacity="0.75"/>
+          <text x="306" y="0" font-style="italic">Breakeven (ROAS = 1.0)</text>
+        </g>
       </svg>
-      <div style="font-size: 11px; color: var(--slate); margin-top: 14px; font-style: italic;">Source: Internal Ad Creatives Analytics · shapermint.com / United States / YouTube · Jan-Apr 2026</div>
+      <div class="chart-foot">Source · Internal Ad Creatives Analytics · shapermint.com · United States · YouTube · Jan–Apr 2026</div>
     </div>
 
-    <div style="background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 24px 28px; border-radius: 2px;">
-      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10px;">The board question</div>
-      <p style="font-size: 17px; line-height: 1.55; color: var(--ink);">We're investing <strong>$130K/month on YouTube Shorts</strong>. ROAS hasn't exceeded 1.0 in 4 months — and CPMs keep climbing. <strong>More spend with the same strategy won't improve the curve. The question isn't "how do we invest more" — it's "how do we invest differently".</strong></p>
+    <div class="callout">
+      <div class="lbl">The board question</div>
+      <p>
+        We're investing <strong>$130K/month on YouTube Shorts</strong>. ROAS hasn't exceeded 1.0 in 4 months, and CPMs keep climbing. <strong>More spend with the same strategy won't improve the curve. The question isn't "how do we invest more"; it's "how do we invest differently".</strong>
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ACT 1 — DIAGNOSIS -->
-<section class="s alt" id="acto1">
-  <div class="container">
+<!-- =========================================================
+     ACT 1 — DIAGNOSIS
+========================================================== -->
+<section class="section" id="act-1" aria-labelledby="act1-title">
+  <div class="wrap">
     <div class="s-head">
-      <div class="act-num">Act 1 · Diagnosis</div>
-      <h2 class="s-title">Apparel and DR play two different games on YouTube.</h2>
-      <p class="s-subtitle">The DR speed game (quantified claim, doctor, urgency) has structural disadvantage for apparel. The storytelling depth game — apparel wins it naturally. The question is which of the two games we invest more volume in.</p>
+      <div class="eyebrow">Act 1 · Diagnosis</div>
+      <h2 class="s-title wide" id="act1-title">Apparel and DR play <span class="accent">two different games</span> on YouTube.</h2>
+      <p class="s-subtitle">The DR speed game (quantified claim, doctor, urgency) has structural disadvantage for apparel. The storytelling depth game: apparel wins it naturally. The question is which of the two games we invest more volume in.</p>
     </div>
 
-    <div class="diag-callout">
+    <div class="callout">
       <div class="lbl">Analysis verdict</div>
-      <p>Apparel has <strong>structural disadvantage in 5 of 6 dimensions</strong> vs DR categories in the Direct Response Shorts format. But <strong>wins 1 dimension: storytelling</strong>. And that turns out to be exactly the dimension YouTube rewards. <strong>The opportunity is to play the game where we have an advantage, not the game where we structurally lose.</strong></p>
+      <p>
+        Apparel has <strong>structural disadvantage in 5 of 6 dimensions</strong> vs DR categories in the Direct Response Shorts format. But <strong>wins 1 dimension: storytelling</strong>. And that turns out to be exactly the dimension YouTube rewards. <strong>The opportunity is to play the game where we have an advantage, not the game where we structurally lose.</strong>
+      </p>
     </div>
 
     <table class="diag-table">
       <thead>
         <tr>
           <th style="width: 44%;">What matters on YouTube Shorts</th>
-          <th style="width: 28%; text-align: center;">Apparel</th>
-          <th style="width: 28%; text-align: center;">Other DTC categories<br><span style="font-weight: 400; font-size: 11px; opacity: 0.75; letter-spacing: 0.04em;">supplements · healthcare · hair · beauty</span></th>
+          <th>Apparel</th>
+          <th>Other DTC categories</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="dim"><strong>Sales velocity</strong><br><span style="font-weight: 400; font-size: 12px; color: var(--slate);">quantified claim · urgency · medical authority · hook variety</span></td>
-          <td style="text-align: center; vertical-align: middle;"><span style="color: #C2C9D2; font-size: 48px; font-weight: 700; line-height: 1;">✗</span></td>
-          <td style="text-align: center; vertical-align: middle;"><span style="color: var(--p2); font-size: 48px; font-weight: 700; line-height: 1;">✓</span></td>
+          <td class="dim">
+            Sales velocity
+            <span class="sub">quantified claim · urgency · medical authority · hook variety</span>
+          </td>
+          <td class="cell-center"><span class="mark mark--lose">✗</span></td>
+          <td class="cell-center"><span class="mark" style="color:var(--navy)">✓</span></td>
         </tr>
-        <tr class="storytelling-row">
-          <td class="dim"><strong>Story depth</strong><br><span style="font-weight: 400; font-size: 12px; color: var(--slate);">body confidence · transformation · representation</span></td>
-          <td style="text-align: center; vertical-align: middle; background: var(--accent-soft);"><span style="color: var(--accent); font-size: 48px; font-weight: 700; line-height: 1;">✓</span></td>
-          <td style="text-align: center; vertical-align: middle;"><span style="color: #C2C9D2; font-size: 48px; font-weight: 700; line-height: 1;">✗</span></td>
+        <tr class="row-win">
+          <td class="dim">
+            Story depth
+            <span class="sub">body confidence · transformation · representation</span>
+          </td>
+          <td class="cell-center"><span class="mark mark--win">✓</span></td>
+          <td class="cell-center"><span class="mark mark--lose">✗</span></td>
         </tr>
       </tbody>
     </table>
 
-    <p style="font-size: 19px; line-height: 1.5; color: var(--ink); margin: 28px 0 8px; max-width: 820px; font-weight: 500;">Apparel <strong style="color: var(--slate);">loses on velocity</strong>. Wins on <strong style="color: var(--accent);">story</strong>. <strong>And YouTube rewards story.</strong></p>
-    <p style="font-size: 12px; color: var(--slate); margin-top: 4px;">→ Dimension-by-dimension analysis (6 detailed rows) in Appendix 04.</p>
-
+    <p class="summary-line">
+      Apparel <strong class="lose">loses on velocity</strong>. Wins on <strong class="win">story</strong>. <strong class="stamp">And YouTube rewards story.</strong>
+    </p>
+    <p class="summary-foot">→ Dimension-by-dimension analysis (6 detailed rows) in Appendix 04.</p>
   </div>
 </section>
 
-<!-- ACT 2 — INSIGHT -->
-<section class="s dark" id="acto2">
-  <div class="container">
+<!-- =========================================================
+     ACT 2 — INSIGHT
+========================================================== -->
+<section class="section section--dark" id="act-2" aria-labelledby="act2-title">
+  <div class="wrap">
     <div class="s-head">
-      <div class="act-num">Act 2 · Insight</div>
-      <h2 class="s-title">YouTube is not Meta. It's research mode.</h2>
-      <p class="s-subtitle">And it turns out that the only dimension where apparel wins — storytelling — is exactly what YouTube rewards.</p>
+      <div class="eyebrow">Act 2 · Insight</div>
+      <h2 class="s-title" id="act2-title">YouTube is not Meta. <span class="accent">It's research mode.</span></h2>
+      <p class="s-subtitle">And it turns out that the only dimension where apparel wins (storytelling) is exactly what YouTube rewards.</p>
     </div>
 
-    <div class="platform-grid">
-      <div class="platform-card">
+    <div class="platforms">
+      <div class="platform">
         <div class="name">Meta · FB / IG</div>
         <div class="mode">Scrolling friends</div>
         <div class="want">Quick distraction · lean-back</div>
       </div>
-      <div class="platform-card">
+      <div class="platform">
         <div class="name">TikTok</div>
         <div class="mode">Lean-back entertainment</div>
         <div class="want">Dopamine · For You algorithm</div>
       </div>
-      <div class="platform-card youtube">
+      <div class="platform platform--feature">
         <div class="name">YouTube</div>
         <div class="mode">Actively searching for something</div>
         <div class="want">Learn · research · decide</div>
       </div>
     </div>
 
-    <div style="background: white; padding: 24px 28px; border-radius: 4px; color: var(--ink); margin: 24px 0;">
-      <p style="font-size: 16px; line-height: 1.55;">People arrive at YouTube typing <strong>"how to choose a bra for 50+"</strong>, <strong>"Shapermint vs Spanx reviews"</strong>. Your paid Short <strong>doesn't compete with other ads</strong> — it competes with <strong>organic Shorts from creators</strong> who are teaching what the user searched for.</p>
-    </div>
+    <p class="lede" style="color: rgba(255,255,255,0.92); max-width: 760px; margin-top: 28px;">
+      People arrive at YouTube typing <strong>"how to choose a bra for 50+"</strong>, <strong>"Shapermint vs Spanx reviews"</strong>. Your paid Short <strong>doesn't compete with other ads</strong>; it competes with <strong>organic Shorts from creators</strong> who are teaching what the user searched for.
+    </p>
 
-    <div class="quote-block">
-      <div class="text">"The most effective Shorts ads avoid aesthetics that feel like conventional ads. The best ones blend with organic content — user-generated, DIY vibe, conversational tone."</div>
+    <div class="pull-quote">
+      <div class="text">The most effective Shorts ads avoid aesthetics that feel like conventional ads. The best ones blend with organic content: user-generated, DIY vibe, conversational tone.</div>
       <div class="source"><strong>Think with Google</strong> · internal analysis of 2,000+ Shorts ads</div>
     </div>
 
-    <div style="background: var(--accent-soft); padding: 24px 28px; border-radius: 4px; border-left: 4px solid var(--accent); margin: 28px 0; color: var(--ink);">
-      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 12px;">Documented paid case · Sephora Holiday 2025</div>
-      <p style="font-size: 16px; line-height: 1.6; margin-bottom: 12px;">Sephora ran a <strong>Shorts-only Demand Gen</strong> campaign with <strong>7 creators</strong> (Wendy Skin, Kenna Marie, Stephanie Voltaire among others) for Holiday 2025 — seasonal gift guides as hook, no in-house brand production.</p>
-      <p style="font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">Result: +82% relative lift in searches for "sephora holiday"</p>
-      <p style="font-size: 14px; color: var(--slate); line-height: 1.5;">Best-in-class brand lift across the campaign. <strong>This is the case that proves paid Shorts with storytelling/creator-led generates measurable business outcomes</strong> — not just views.</p>
+    <div class="lift-display" style="background: var(--navy-deep); border-color: rgba(255,255,255,0.12); margin-top: 28px;">
+      <div class="figure">+82%</div>
+      <div class="meta">
+        <div class="lbl" style="color: var(--coral);">Sephora Holiday 2025 · documented paid case</div>
+        <p style="color: rgba(255,255,255,0.92);">
+          Shorts-only Demand Gen campaign with <strong style="color:var(--white);">7 creators</strong> (Wendy Skin, Kenna Marie, Stephanie Voltaire) for Holiday 2025. Seasonal gift guides as hook. No in-house brand production.
+        </p>
+        <div class="small" style="color: rgba(255,255,255,0.6);">
+          Relative lift in searches for "sephora holiday" · best-in-class brand lift across the campaign. The case that proves <strong style="color:var(--white);">paid Shorts with storytelling and creator-led production generate measurable business outcomes</strong>, not just views.
+        </div>
+      </div>
     </div>
 
-    <div class="insight-conclusion">
-      <p><strong>The implication:</strong> paid Shorts that win blend with storytelling and authority — the dimension where apparel wins. <strong>YouTube rewards what apparel does well.</strong></p>
+    <div class="callout callout--dark" style="margin-top: 32px;">
+      <div class="lbl">The implication</div>
+      <p>Paid Shorts that win blend with storytelling and authority: the dimension where apparel wins. <strong>YouTube rewards what apparel does well.</strong></p>
     </div>
   </div>
 </section>
 
-<!-- ACT 3 — THE BET -->
-<section class="s" id="acto3">
-  <div class="container">
+<!-- =========================================================
+     ACT 3 — THE BET
+========================================================== -->
+<section class="section section--warm" id="act-3" aria-labelledby="act3-title">
+  <div class="wrap">
     <div class="s-head">
-      <div class="act-num">Act 3 · The bet</div>
-      <h2 class="s-title">We compete in the lane where apparel wins, not in DR categories' lane.</h2>
+      <div class="eyebrow">Act 3 · The bet</div>
+      <h2 class="s-title wide" id="act3-title">We compete in the <span class="accent">lane where apparel wins</span>, not in DR categories' lane.</h2>
       <p class="s-subtitle">We don't reduce what we already do. We redistribute the other 30% of the mix toward formats that YouTube specifically rewards.</p>
     </div>
 
-    <div style="background: var(--bg); border: 1px dashed var(--slate); padding: 14px 18px; border-radius: 4px; margin-bottom: 28px; font-size: 13px; color: var(--slate); max-width: 880px;">
-      <strong style="color: var(--ink);">Scope:</strong> this proposal applies to the <strong style="color: var(--ink);">creative mix within the current YouTube Shorts budget</strong> — not a spend increase or cross-channel redistribution. The percentages refer to the # of active variants per pattern.
+    <div class="scope-note">
+      <strong>Scope:</strong> this proposal applies to the <strong>creative mix within the current YouTube Shorts budget</strong>. Not a spend increase or cross-channel redistribution. The percentages refer to the number of active variants per pattern.
     </div>
 
-    <div class="bet-headline"><strong>70 / 20 / 10 distribution</strong> of the YouTube Shorts creative mix. The 70% stays intact — the new bet is the remaining 30%.</div>
+    <div class="bet-headline">
+      <strong>70 / 20 / 10 distribution</strong> of the YouTube Shorts creative mix. The 70% stays intact. The new bet is the remaining 30%.
+    </div>
 
-    <div style="background: white; border: 1px solid var(--line); border-radius: 6px; padding: 24px; margin-bottom: 32px; max-width: 880px; box-shadow: var(--shadow);">
-      <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 12px;">Where does 70/20/10 come from?</div>
-      <p style="font-size: 14px; line-height: 1.6; color: var(--ink); margin-bottom: 16px;">The number is anchored in the <strong>distribution of patterns across the 240 ads in the YouTube category</strong>. It's not arbitrary — it's an incremental move toward the mix the category already validates.</p>
-      <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+    <div class="anchor-table">
+      <div class="lbl">Where does 70/20/10 come from?</div>
+      <p>The number is anchored in the <strong style="color:var(--ink);">distribution of patterns across the 240 ads in the YouTube category</strong>. It's not arbitrary; it's an incremental move toward the mix the category already validates.</p>
+      <table>
         <thead>
-          <tr style="background: var(--navy); color: white;">
-            <th style="padding: 10px 14px; text-align: left; font-weight: 600;">Distribution</th>
-            <th style="padding: 10px 14px; text-align: center; font-weight: 600;">DR UGC</th>
-            <th style="padding: 10px 14px; text-align: center; font-weight: 600;">Authority + Series</th>
-            <th style="padding: 10px 14px; text-align: center; font-weight: 600;">Repurposed Organic</th>
+          <tr>
+            <th style="text-align:left;">Distribution</th>
+            <th>DR UGC</th>
+            <th>Authority + Series</th>
+            <th>Repurposed Organic</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom: 1px solid var(--line);">
-            <td style="padding: 10px 14px; color: var(--slate);">YT category (240 ads)</td>
-            <td style="padding: 10px 14px; text-align: center;">58%</td>
-            <td style="padding: 10px 14px; text-align: center;">13%</td>
-            <td style="padding: 10px 14px; text-align: center;">6%</td>
+          <tr>
+            <td style="color:var(--slate);">YT category (240 ads)</td>
+            <td>58%</td>
+            <td>13%</td>
+            <td>6%</td>
           </tr>
-          <tr style="border-bottom: 1px solid var(--line);">
-            <td style="padding: 10px 14px; color: var(--slate);">Trafilea today (estimated)</td>
-            <td style="padding: 10px 14px; text-align: center; font-weight: 600;">~100%</td>
-            <td style="padding: 10px 14px; text-align: center;">0%</td>
-            <td style="padding: 10px 14px; text-align: center;">0%</td>
+          <tr>
+            <td style="color:var(--slate);">Trafilea today (estimated)</td>
+            <td style="font-weight:600;">~100%</td>
+            <td>0%</td>
+            <td>0%</td>
           </tr>
-          <tr style="background: var(--accent-soft);">
-            <td style="padding: 10px 14px; font-weight: 600; color: var(--ink);">Proposal</td>
-            <td style="padding: 10px 14px; text-align: center; font-weight: 700; color: var(--ink);">70%</td>
-            <td style="padding: 10px 14px; text-align: center; font-weight: 700; color: var(--accent);">20%</td>
-            <td style="padding: 10px 14px; text-align: center; font-weight: 700; color: var(--accent);">10%</td>
+          <tr class="proposal">
+            <td>Proposal</td>
+            <td>70%</td>
+            <td class="coral">20%</td>
+            <td class="coral">10%</td>
           </tr>
         </tbody>
       </table>
-      <p style="font-size: 12px; color: var(--slate); margin-top: 12px; line-height: 1.5;"><strong>Argument:</strong> Trafilea stays <strong style="color: var(--ink);">above the category average in DR UGC</strong> (70 vs 58), but <strong style="color: var(--ink);">adds the 30% the category validates</strong>. Conservative move, not disruptive pivot.</p>
+      <div class="note"><strong>Argument:</strong> Trafilea stays <strong>above the category average in DR UGC</strong> (70 vs 58), but <strong>adds the 30% the category validates</strong>. Conservative move, not disruptive pivot.</div>
     </div>
 
-    <div class="distribution">
-      <div class="dist-row maintain">
+    <div class="dist">
+      <div class="dist-row">
         <div class="pct">70%</div>
         <div class="body">
-          <h4>Direct Response UGC — maintain, don't scale</h4>
-          <p>It's what we already know how to do and already performs. Keeps running the same. <strong>We don't touch volume or creative.</strong> Research confirms apparel can't win this format against supplements — but we can sustain it as a base.</p>
+          <h4>Direct Response UGC: maintain, don't scale</h4>
+          <p>It's what we already know how to do and already performs. Keeps running the same. <strong>We don't touch volume or creative.</strong> Research confirms apparel can't win this format against supplements, but we can sustain it as a base.</p>
         </div>
-        <div class="label">Status<strong>No changes</strong></div>
+        <div class="status">Status<strong>No changes</strong></div>
       </div>
 
-      <div class="dist-row bet">
+      <div class="dist-row is-bet">
         <div class="pct">20%</div>
         <div class="body">
           <h4>Storytelling Series + Apparel-fit Authority</h4>
           <p>The new bet. Two formats YouTube rewards and where apparel has structural advantage:</p>
-          <ul style="margin-top: 8px; padding-left: 18px; color: var(--slate); font-size: 13.5px; line-height: 1.6;">
-            <li><strong>Series content</strong> — themed chapters instead of standalone ads. Each Short advances one question. Whoever watches episode 5 is already emotionally invested (Liberare playbook).</li>
-            <li><strong>Apparel-fit Authority</strong> — yoga instructor, physical therapist, Pilates, posture coach. <em>NOT</em> doctors (don't fit apparel + mostly male profile doesn't resonate with the audience).</li>
+          <ul>
+            <li><strong>Series content:</strong> themed chapters instead of standalone ads. Each Short advances one question. Whoever watches episode 5 is already emotionally invested (Liberare playbook).</li>
+            <li><strong>Apparel-fit Authority:</strong> yoga instructor, physical therapist, Pilates, posture coach. <em>Not</em> doctors (don't fit apparel, and a mostly male profile doesn't resonate with the audience).</li>
           </ul>
         </div>
-        <div class="label">Status<strong>New bet</strong></div>
+        <div class="status">Status<strong>New bet</strong></div>
       </div>
 
-      <div class="dist-row cheap">
+      <div class="dist-row is-cheap">
         <div class="pct">10%</div>
         <div class="body">
           <h4>Repurposed Organic</h4>
-          <p>Cut existing organic content (own creators, podcasts, behind-the-scenes) as paid. <strong>Zero additional production.</strong> It's the cheapest creative supply chain we have — and looks native in the Shorts feed (Magic Mind playbook).</p>
+          <p>Cut existing organic content (own creators, podcasts, behind-the-scenes) as paid. <strong>Zero additional production.</strong> It's the cheapest creative supply chain we have, and it looks native in the Shorts feed (Magic Mind playbook).</p>
         </div>
-        <div class="label">Status<strong>Zero cost</strong></div>
+        <div class="status">Status<strong>Zero cost</strong></div>
       </div>
     </div>
 
-    <div class="bet-frame">
+    <div class="callout callout--dark">
       <div class="lbl">The frame for the board</div>
       <p>The 70% that already works <strong>is not touched</strong>. The move is <strong>reorganizing the other 30%</strong> toward formats that YouTube specifically rewards and where apparel has structural advantage. It's an incremental change, not a disruptive pivot.</p>
     </div>
   </div>
 </section>
 
-<!-- ACT 4 — THE PROOF -->
-<section class="s alt" id="acto4">
-  <div class="container">
+<!-- =========================================================
+     ACT 4 — THE PROOF
+========================================================== -->
+<section class="section section--white" id="act-4" aria-labelledby="act4-title">
+  <div class="wrap">
     <div class="s-head">
-      <div class="act-num">Act 4 · The proof</div>
-      <h2 class="s-title">This is not theory. The winners are already doing it.</h2>
-      <p class="s-subtitle">Four organic plays validate the playbook. Knix (period intimates), Liberare (lingerie), Vanessa Moynihan (maternity swimsuits) and bodyshapinggirl (waist trainer) are <strong>categories adjacent to shapewear</strong> — the play's mechanics are transferable.</p>
+      <div class="eyebrow">Act 4 · The proof</div>
+      <h2 class="s-title wide" id="act4-title">This is not theory. <span class="accent">The winners are already doing it.</span></h2>
+      <p class="s-subtitle">Four organic plays validate the playbook. Knix (period intimates), Liberare (lingerie), Vanessa Moynihan (maternity swimsuits) and bodyshapinggirl (waist trainer) are <strong>categories adjacent to shapewear</strong>. The play's mechanics are transferable.</p>
     </div>
 
-    <div style="background: var(--accent-soft); padding: 20px 24px; border-radius: 4px; border-left: 4px solid var(--accent); margin-bottom: 32px; max-width: 920px;">
-      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 8px;">The ROAS opportunity</div>
-      <p style="font-size: 15px; line-height: 1.55; color: var(--ink);">These 4 adjacent brands (period intimates, lingerie, swimsuits, body-shaping) generate <strong>18M+ combined views</strong> with this playbook — without disproportionate spend. <strong style="color: var(--accent);">Adapting it to Shapermint is the concrete play to move ROAS from 0.78 upward</strong> — without increasing our current spend.</p>
+    <div class="lift-display">
+      <div class="figure">18M+</div>
+      <div class="meta">
+        <div class="lbl">The ROAS opportunity</div>
+        <p>These 4 adjacent brands (period intimates, lingerie, swimsuits, body-shaping) generate <strong>combined views with this playbook</strong>, without disproportionate spend.</p>
+        <div class="small"><strong style="color:var(--coral-deep);">Adapting it to Shapermint is the concrete play to move ROAS from 0.78 upward</strong>, without increasing our current spend.</div>
+      </div>
     </div>
 
-    <div class="organic-grid">
-      <div class="organic-card video-card">
-        <div class="card-media">
-          <div class="video-wrap">
-            <video preload="metadata" playsinline muted poster="posters/organic_Vanessa_Swimsuits.jpg">
+    <div class="proof-grid">
+
+      <article class="proof has-video layout-side">
+        <div class="video-col">
+          <div class="video-wrap" tabindex="0" role="button" aria-label="Play Vanessa Moynihan swimsuit video">
+            <video preload="none" playsinline muted poster="posters/organic_Vanessa_Swimsuits.jpg">
               <source src="videos/organic_Vanessa_Swimsuits.mp4" type="video/mp4">
             </video>
             <div class="play-overlay"><div class="play-icon"></div></div>
           </div>
         </div>
-        <div class="card-body">
-          <div class="lbl">Play · Audience as co-decision-maker</div>
+        <div class="body">
+          <div class="play-label">Play · Audience as co-decision-maker</div>
           <div class="stat-line"><span>Vanessa Moynihan</span><span class="views">10.2M views</span></div>
-          <h4>"1️⃣-4️⃣ which is your fav?"</h4>
+          <h4>"1️⃣–4️⃣ which is your fav?"</h4>
           <p>Not a product review. It's <strong>"audience as co-decision-maker for a real moment"</strong>. The creator isn't selling: she asks for help. The purchase is a side effect of entertainment.</p>
-          <div class="quote">Four mechanisms at once: personal stakes (pregnancy + swimsuit shopping), numbered options (1-2-3-4), strategic vulnerability (admits defects), comment bait → algorithm pushes.</div>
+          <div class="inline-quote">Four mechanisms at once: personal stakes (pregnancy + swimsuit shopping), numbered options (1-2-3-4), strategic vulnerability (admits defects), comment bait → algorithm pushes.</div>
           <div class="replicable">
-            <strong>Replicable for Shapermint</strong>
+            <span class="lbl">Replicable for Shapermint</span>
             <ul>
               <li>"I have a wedding, which bra/shapewear do I choose from these 4 options?"</li>
               <li>Ask the audience for feedback, don't say "buy"</li>
@@ -878,45 +1793,45 @@ footer .bottom {
             </ul>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="organic-card">
-        <div class="lbl">Play · Question the inheritance</div>
+      <article class="proof">
+        <div class="play-label">Play · Question the inheritance</div>
         <h4>Knix</h4>
-        <p>Knix runs the <strong>"question the inheritance"</strong> play: questions what your mom passed down, stacks 3 specific pains, sells the category —not the product— as the way out, and closes with meme-bait. Structured persuasion in TikTok voice.</p>
+        <p>Knix runs the <strong>"question the inheritance"</strong> play: questions what your mom passed down, stacks 3 specific pains, sells the category (not the product) as the way out, and closes with meme-bait. Structured persuasion in TikTok voice.</p>
         <div class="replicable">
-          <strong>Replicable for Shapermint</strong>
+          <span class="lbl">Replicable for Shapermint</span>
           <ul>
             <li>"Just because your mom told you shapewear has to dig in to work, doesn't mean it does."</li>
             <li>"Just because shaping used to mean suffocating, doesn't mean it still has to."</li>
             <li>"Just because your mom hid her shapewear, doesn't mean you have to."</li>
           </ul>
         </div>
-      </div>
+      </article>
 
-      <div class="organic-card video-card">
-        <div class="card-media dual">
-          <div class="video-wrap">
-            <video preload="metadata" playsinline muted poster="posters/organic_Liberare_TakeItOff.jpg">
+      <article class="proof has-video layout-side">
+        <div class="video-col layout-dual" style="display:grid; grid-template-rows: 1fr 1fr; gap:2px;">
+          <div class="video-wrap" tabindex="0" role="button" aria-label="Play Liberare Take It Off video">
+            <video preload="none" playsinline muted poster="posters/organic_Liberare_TakeItOff.jpg">
               <source src="videos/organic_Liberare_TakeItOff.mp4" type="video/mp4">
             </video>
             <div class="play-overlay"><div class="play-icon"></div></div>
           </div>
-          <div class="video-wrap">
-            <video preload="metadata" playsinline muted poster="posters/organic_Liberare_TinyDetail.jpg">
+          <div class="video-wrap" tabindex="0" role="button" aria-label="Play Liberare Tiny Detail video">
+            <video preload="none" playsinline muted poster="posters/organic_Liberare_TinyDetail.jpg">
               <source src="videos/organic_Liberare_TinyDetail.mp4" type="video/mp4">
             </video>
             <div class="play-overlay"><div class="play-icon"></div></div>
           </div>
         </div>
-        <div class="card-body">
-          <div class="lbl">Play · Content-as-product-development</div>
+        <div class="body">
+          <div class="play-label">Play · Content-as-product-development</div>
           <div class="stat-line"><span>Liberare</span><span class="views">3.2M + 1.2M views</span></div>
           <h4>Serial content as playbook</h4>
           <p>Not an ad or UGC. It's <strong>content as product development</strong>. Each Short is an episode of a show. Whoever watches episode 5 is already emotionally invested.</p>
-          <div class="quote">Treats YouTube as a show platform, not an ad feed. Each Short is a chapter of the brand's season. The audience is built episode by episode.</div>
+          <div class="inline-quote">Treats YouTube as a show platform, not an ad feed. Each Short is a chapter of the brand's season. The audience is built episode by episode.</div>
           <div class="replicable">
-            <strong>Replicable for Shapermint</strong>
+            <span class="lbl">Replicable for Shapermint</span>
             <ul>
               <li>Think in seasons / series, not standalone ads</li>
               <li>Each Short advances one question or product detail</li>
@@ -924,25 +1839,25 @@ footer .bottom {
             </ul>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div class="organic-card video-card">
-        <div class="card-media">
-          <div class="video-wrap">
-            <video preload="metadata" playsinline muted poster="posters/organic_bodyshapinggirl.jpg">
+      <article class="proof has-video layout-side">
+        <div class="video-col">
+          <div class="video-wrap" tabindex="0" role="button" aria-label="Play bodyshapinggirl postpartum video">
+            <video preload="none" playsinline muted poster="posters/organic_bodyshapinggirl.jpg">
               <source src="videos/organic_bodyshapinggirl.mp4" type="video/mp4">
             </video>
             <div class="play-overlay"><div class="play-icon"></div></div>
           </div>
         </div>
-        <div class="card-body">
-          <div class="lbl">Play · Skeptical veteran with receipts</div>
+        <div class="body">
+          <div class="play-label">Play · Skeptical veteran with receipts</div>
           <div class="stat-line"><span>bodyshapinggirl</span><span class="views">3.4M views</span></div>
-          <h4>"Postpartum 8 Kids + 200lb · Before & After"</h4>
+          <h4>"Postpartum · 8 kids + 200lb · before &amp; after"</h4>
           <p>Builds trust from the <strong>skeptical-veteran position</strong>: opens with specific personal authority, predicts the product will fail, then reveals the opposite. The exact measurements are the receipts. <strong>The body is the proof; the numbers are the contract.</strong></p>
-          <div class="quote">Specificity that's impossible to fake is what sells. Data is the close, not the hook.</div>
+          <div class="inline-quote">Specificity that's impossible to fake is what sells. Data is the close, not the hook.</div>
           <div class="replicable">
-            <strong>Replicable for Shapermint</strong>
+            <span class="lbl">Replicable for Shapermint</span>
             <ul>
               <li>Cast a 50+ woman with specific personal authority</li>
               <li>"I didn't believe this, but…" structure + real before/after measurements</li>
@@ -950,60 +1865,60 @@ footer .bottom {
             </ul>
           </div>
         </div>
-      </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- APPENDIX -->
-<div class="container">
-  <div class="appendix-marker">Appendix · supporting evidence</div>
-</div>
+<!-- =========================================================
+     APPENDIX
+========================================================== -->
+<div class="appendix-divider" id="appendix">Appendix · supporting evidence</div>
 
-<section class="app-section" id="apendice">
-  <div class="container">
+<section class="section section--appendix" id="apx-1" aria-labelledby="apx1-title">
+  <div class="wrap">
     <div class="app-head">
       <div class="lbl">Appendix 01</div>
-      <h3>Pattern distribution in the category</h3>
+      <h3 id="apx1-title">Pattern distribution in the category</h3>
+      <p>Across 240 classified ads, four structures dominate the category. Direct Response (UGC + Authority) represents 71% combined.</p>
     </div>
-    <p style="color: var(--slate); margin-bottom: 32px; max-width: 760px;">Across 240 classified ads, four structures dominate the category. Direct Response (UGC + Authority) represents 60% combined.</p>
     <div class="pattern-grid">
       <div class="donut-wrap">
-        <svg width="280" height="280" viewBox="0 0 320 320">
+        <svg width="300" height="300" viewBox="0 0 320 320" role="img" aria-label="Donut chart: Direct Response UGC 58%, Brand Aesthetic 23%, Direct Response with Authority 13%, Repurposed Organic 6%.">
           <g transform="translate(160,160)">
-            <circle r="120" fill="none" stroke="#F0F2F5" stroke-width="36"/>
-            <!-- Re-distribuido sin Showcase: total 204. P1=58%, P3=23%, P2=13%, P4=6% -->
-            <circle r="120" fill="none" stroke="#264653" stroke-width="36"
+            <circle r="120" fill="none" stroke="#ECEFF3" stroke-width="36"/>
+            <circle r="120" fill="none" stroke="#0A2038" stroke-width="36"
               stroke-dasharray="437.32 754.0" stroke-dashoffset="0" transform="rotate(-90)"/>
-            <circle r="120" fill="none" stroke="#E9C46A" stroke-width="36"
+            <circle r="120" fill="none" stroke="#F05549" stroke-width="36"
               stroke-dasharray="173.42 754.0" stroke-dashoffset="-437.32" transform="rotate(-90)"/>
-            <circle r="120" fill="none" stroke="#2A9D8F" stroke-width="36"
+            <circle r="120" fill="none" stroke="#515C5E" stroke-width="36"
               stroke-dasharray="98.02 754.0" stroke-dashoffset="-610.74" transform="rotate(-90)"/>
-            <circle r="120" fill="none" stroke="#F4A261" stroke-width="36"
+            <circle r="120" fill="none" stroke="#8A9398" stroke-width="36"
               stroke-dasharray="48.99 754.0" stroke-dashoffset="-708.76" transform="rotate(-90)"/>
-            <text y="-6" text-anchor="middle" font-size="42" font-weight="600" fill="#0A2540">4</text>
-            <text y="20" text-anchor="middle" font-size="11" fill="#5A6A7E" letter-spacing="2">PATTERNS</text>
+            <text y="-4" text-anchor="middle" font-size="44" font-weight="700" fill="#07161A" letter-spacing="-2">4</text>
+            <text y="22" text-anchor="middle" font-size="10" fill="#515C5E" letter-spacing="3" font-weight="700">PATTERNS</text>
           </g>
         </svg>
       </div>
       <div class="legend">
         <div class="legend-item">
-          <div class="dot" style="background:#264653"></div>
+          <div class="dot" style="background:#0A2038"></div>
           <div class="name">Direct Response UGC<span class="desc">Creator talking to camera, their home, problem → solution</span></div>
           <div class="pct">58%</div>
         </div>
         <div class="legend-item">
-          <div class="dot" style="background:#E9C46A"></div>
+          <div class="dot" style="background:#F05549"></div>
           <div class="name">Brand Aesthetic<span class="desc">High production, brand-led, cinematic</span></div>
           <div class="pct">23%</div>
         </div>
         <div class="legend-item">
-          <div class="dot" style="background:#2A9D8F"></div>
+          <div class="dot" style="background:#515C5E"></div>
           <div class="name">Direct Response with Authority<span class="desc">Doctor, expert, or clinical positioning</span></div>
           <div class="pct">13%</div>
         </div>
         <div class="legend-item">
-          <div class="dot" style="background:#F4A261"></div>
+          <div class="dot" style="background:#8A9398"></div>
           <div class="name">Repurposed Organic<span class="desc">Podcast clip, viral, behind-the-scenes</span></div>
           <div class="pct">6%</div>
         </div>
@@ -1012,18 +1927,18 @@ footer .bottom {
   </div>
 </section>
 
-<section class="app-section" id="apendice-platforms">
-  <div class="container">
+<section class="section section--appendix" id="apx-2" aria-labelledby="apx2-title">
+  <div class="wrap">
     <div class="app-head">
       <div class="lbl">Appendix 02</div>
-      <h3>Same creative, different KPIs · YouTube Shorts vs Reels vs TikTok</h3>
+      <h3 id="apx2-title">Same creative, different KPIs · YouTube Shorts vs Reels vs TikTok</h3>
+      <p><strong>70–80% of DTC brands ship the same file to all 3 platforms.</strong> The differentiation that matters is not the creative; it's <strong>which pattern dominates the channel mix</strong>. Format is the same; channel ROAS is not.</p>
     </div>
-    <p style="color: var(--slate); margin-bottom: 24px; max-width: 760px;"><strong>70-80% of DTC brands ship the same file to all 3 platforms.</strong> The differentiation that matters is not the creative — it's <strong>which pattern dominates the channel mix</strong>. Format is the same; channel ROAS is not.</p>
-    <table class="platforms">
+    <table class="platforms-table">
       <thead>
         <tr>
           <th>Dimension</th>
-          <th class="youtube">YouTube Shorts</th>
+          <th class="yt">YouTube Shorts</th>
           <th>Instagram Reels</th>
           <th>TikTok</th>
         </tr>
@@ -1031,73 +1946,73 @@ footer .bottom {
       <tbody>
         <tr>
           <td class="dim">Format</td>
-          <td class="youtube">9:16 · hasta 60s (3min beta)</td>
-          <td>9:16 · hasta 90s</td>
-          <td>9:16 · hasta 10min</td>
+          <td class="yt">9:16 · up to 60s (3min beta)</td>
+          <td>9:16 · up to 90s</td>
+          <td>9:16 · up to 10min</td>
         </tr>
         <tr>
           <td class="dim">Discovery mechanic</td>
-          <td class="youtube">Algorithmic feed + funnel to long-form YT</td>
+          <td class="yt">Algorithmic feed + funnel to long-form YT</td>
           <td>Friends + algorithm mix · social context drives conversion</td>
-          <td>Pure For You algorithm — strongest discovery</td>
+          <td>Pure For You algorithm · strongest discovery</td>
         </tr>
         <tr>
           <td class="dim">Audience intent</td>
-          <td class="youtube">Discovery + research / how-to</td>
+          <td class="yt">Discovery + research / how-to</td>
           <td>Social + shopping (IG Shop integrated)</td>
           <td>Lean-back entertainment</td>
         </tr>
         <tr>
-          <td class="dim">CPM DTC (2024-25)</td>
-          <td class="youtube">$7–12</td>
+          <td class="dim">CPM DTC (2024–25)</td>
+          <td class="yt">$7–12</td>
           <td>$9–14 (highest)</td>
           <td>$5–9 (cheapest)</td>
         </tr>
         <tr>
           <td class="dim">Direct conv rate (DTC)</td>
-          <td class="youtube">Mid (rising)</td>
+          <td class="yt">Mid (rising)</td>
           <td>Highest (IG Shop checkout)</td>
           <td>Lowest (high awareness, low conv)</td>
         </tr>
         <tr>
           <td class="dim">Best-fit pattern</td>
-          <td class="youtube"><strong>Authority + Repurposed Organic</strong> (podcasts, long-form clips)</td>
+          <td class="yt"><strong>Authority + Repurposed Organic</strong> (podcasts, long-form clips)</td>
           <td>Direct Response UGC</td>
-          <td>Repurposed Organic (storytelling/duet/trends)</td>
+          <td>Repurposed Organic (storytelling / duet / trends)</td>
         </tr>
         <tr>
           <td class="dim">Why that fit</td>
-          <td class="youtube">Longer attention span, research/learning context</td>
+          <td class="yt">Longer attention span, research / learning context</td>
           <td>Highest commerce intent, shoppable native</td>
-          <td>Trend cycles + duet/stitch culture</td>
+          <td>Trend cycles + duet / stitch culture</td>
         </tr>
       </tbody>
     </table>
-    <p style="color: var(--slate); font-size: 12px; margin-top: 14px;"><strong>Sources:</strong> 2024-25 DTC benchmarks from Triple Whale, Northbeam, Common Thread Collective · Meta Q4 2024 Reels report · Google Demand Gen 2025 release notes.</p>
+    <p style="font-size:12px; color:var(--slate); margin-top:14px;"><strong>Sources:</strong> 2024–25 DTC benchmarks from Triple Whale, Northbeam, Common Thread Collective · Meta Q4 2024 Reels report · Google Demand Gen 2025 release notes.</p>
   </div>
 </section>
 
-<section class="app-section" id="apendice-library">
-  <div class="container">
+<section class="section section--appendix" id="apx-3" aria-labelledby="apx3-title">
+  <div class="wrap">
     <div class="app-head">
       <div class="lbl">Appendix 03</div>
-      <h3>17 category examples · playable ad library</h3>
+      <h3 id="apx3-title">17 category examples · playable ad library</h3>
+      <p>Curated from the visual review of 100 ads. Click any thumbnail to play. Pattern filter below.</p>
     </div>
-    <p style="color: var(--slate); margin-bottom: 24px; max-width: 760px;">Curated from the visual review of 100 ads. Click any thumbnail to play. Pattern filter below.</p>
 
-    <div class="filter-bar">
-      <button class="filter-pill active" data-filter="all">All · 17</button>
-      <button class="filter-pill" data-filter="P1">Direct Response UGC</button>
-      <button class="filter-pill" data-filter="P2">Direct Response with Authority</button>
-      <button class="filter-pill" data-filter="P3">Brand Aesthetic</button>
-      <button class="filter-pill" data-filter="P4">Repurposed Organic</button>
-      <button class="filter-pill" data-filter="P5">Showcase</button>
+    <div class="filter-bar" role="tablist" aria-label="Filter ads by pattern">
+      <button class="filter-pill" data-filter="all" aria-pressed="true" role="tab">All · 17</button>
+      <button class="filter-pill" data-filter="P1" aria-pressed="false" role="tab">Direct Response UGC</button>
+      <button class="filter-pill" data-filter="P2" aria-pressed="false" role="tab">Direct Response with Authority</button>
+      <button class="filter-pill" data-filter="P3" aria-pressed="false" role="tab">Brand Aesthetic</button>
+      <button class="filter-pill" data-filter="P4" aria-pressed="false" role="tab">Repurposed Organic</button>
+      <button class="filter-pill" data-filter="P5" aria-pressed="false" role="tab">Showcase</button>
     </div>
 
     <div class="ads-grid">
       <div class="ad-card" data-pattern="P1">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Shapellx_P1-UGC_BeforeAfter-reddress.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Shapellx Before/After red dress">
+          <video preload="none" playsinline muted poster="posters/Shapellx_P1-UGC_BeforeAfter-reddress.jpg">
             <source src="videos/Shapellx_P1-UGC_BeforeAfter-reddress.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1108,8 +2023,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P1">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Shapellx_P1-UGC_STOPhand-disruption.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Shapellx STOP hand disruption">
+          <video preload="none" playsinline muted poster="posters/Shapellx_P1-UGC_STOPhand-disruption.jpg">
             <source src="videos/Shapellx_P1-UGC_STOPhand-disruption.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1120,8 +2035,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P1">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Shapermint_P1-UGC_BraLifts-Discomfort.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Shapermint bra lifts discomfort">
+          <video preload="none" playsinline muted poster="posters/Shapermint_P1-UGC_BraLifts-Discomfort.jpg">
             <source src="videos/Shapermint_P1-UGC_BraLifts-Discomfort.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1132,8 +2047,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P1">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/TrueClassic_P1-UGC_DadBod-Problem.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play True Classic dad bod">
+          <video preload="none" playsinline muted poster="posters/TrueClassic_P1-UGC_DadBod-Problem.jpg">
             <source src="videos/TrueClassic_P1-UGC_DadBod-Problem.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1144,8 +2059,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P1">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Hims_P1-UGC_GLP1-Checkmarks.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Hims GLP-1 checkmarks">
+          <video preload="none" playsinline muted poster="posters/Hims_P1-UGC_GLP1-Checkmarks.jpg">
             <source src="videos/Hims_P1-UGC_GLP1-Checkmarks.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1156,20 +2071,20 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P2">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/AG1_P2-Auth_DrHuberman-Sleep.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play AG1 Huberman sleep">
+          <video preload="none" playsinline muted poster="posters/AG1_P2-Auth_DrHuberman-Sleep.jpg">
             <source src="videos/AG1_P2-Auth_DrHuberman-Sleep.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
         </div>
         <div class="info">
           <div class="brand-row"><span class="brand-name">AG1</span><span class="pattern-tag tag-p2">Authority</span></div>
-          <div class="why">Dr. Huberman + name/credential in safe zone.</div>
+          <div class="why">Dr. Huberman + name / credential in safe zone.</div>
         </div>
       </div>
       <div class="ad-card" data-pattern="P2">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Nutrafol_P2-Auth_PersonalTesti-LongHair.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Nutrafol long hair">
+          <video preload="none" playsinline muted poster="posters/Nutrafol_P2-Auth_PersonalTesti-LongHair.jpg">
             <source src="videos/Nutrafol_P2-Auth_PersonalTesti-LongHair.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1180,8 +2095,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P2">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Nutrafol_P2-Auth_MenopauseFormula.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Nutrafol menopause formula">
+          <video preload="none" playsinline muted poster="posters/Nutrafol_P2-Auth_MenopauseFormula.jpg">
             <source src="videos/Nutrafol_P2-Auth_MenopauseFormula.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1192,8 +2107,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P3">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Glossier_P3-Brand_LipEnhancer-Closeup.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Glossier lip enhancer">
+          <video preload="none" playsinline muted poster="posters/Glossier_P3-Brand_LipEnhancer-Closeup.jpg">
             <source src="videos/Glossier_P3-Brand_LipEnhancer-Closeup.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1204,8 +2119,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P3">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/SKIMS_P3-Brand_BrownBra-Product.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play SKIMS brown bra">
+          <video preload="none" playsinline muted poster="posters/SKIMS_P3-Brand_BrownBra-Product.jpg">
             <source src="videos/SKIMS_P3-Brand_BrownBra-Product.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1216,8 +2131,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P3">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/SKIMS_P3-Brand_UltimateBra-GreyTop.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play SKIMS Ultimate Bra grey top">
+          <video preload="none" playsinline muted poster="posters/SKIMS_P3-Brand_UltimateBra-GreyTop.jpg">
             <source src="videos/SKIMS_P3-Brand_UltimateBra-GreyTop.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1228,8 +2143,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P4">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/MagicMind_P4-Org_7DayReview.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Magic Mind 7 day review">
+          <video preload="none" playsinline muted poster="posters/MagicMind_P4-Org_7DayReview.jpg">
             <source src="videos/MagicMind_P4-Org_7DayReview.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1240,8 +2155,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P4">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/MagicMind_P4-Org_PodcastSentMe.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Magic Mind podcast clip">
+          <video preload="none" playsinline muted poster="posters/MagicMind_P4-Org_PodcastSentMe.jpg">
             <source src="videos/MagicMind_P4-Org_PodcastSentMe.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1252,8 +2167,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P4">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/BetterHelp_P4-Org_PodcastTherapy.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play BetterHelp podcast therapy">
+          <video preload="none" playsinline muted poster="posters/BetterHelp_P4-Org_PodcastTherapy.jpg">
             <source src="videos/BetterHelp_P4-Org_PodcastTherapy.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1264,8 +2179,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P5">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Temu_P5-Edge_SofaBed-POVDemo.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Temu sofa bed POV demo">
+          <video preload="none" playsinline muted poster="posters/Temu_P5-Edge_SofaBed-POVDemo.jpg">
             <source src="videos/Temu_P5-Edge_SofaBed-POVDemo.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1276,8 +2191,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P5">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Temu_P5-Edge_Cookies-1forZero.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Temu cookies one for zero">
+          <video preload="none" playsinline muted poster="posters/Temu_P5-Edge_Cookies-1forZero.jpg">
             <source src="videos/Temu_P5-Edge_Cookies-1forZero.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1288,8 +2203,8 @@ footer .bottom {
         </div>
       </div>
       <div class="ad-card" data-pattern="P5">
-        <div class="video-wrap">
-          <video preload="metadata" playsinline muted poster="posters/Next_P5-Edge_SPANXatNext-Partnership.jpg">
+        <div class="video-wrap" tabindex="0" role="button" aria-label="Play Next Spanx partnership">
+          <video preload="none" playsinline muted poster="posters/Next_P5-Edge_SPANXatNext-Partnership.jpg">
             <source src="videos/Next_P5-Edge_SPANXatNext-Partnership.mp4" type="video/mp4">
           </video>
           <div class="play-overlay"><div class="play-icon"></div></div>
@@ -1303,110 +2218,113 @@ footer .bottom {
   </div>
 </section>
 
-<section class="app-section" id="apendice-detalle">
-  <div class="container">
+<section class="section section--appendix" id="apx-4" aria-labelledby="apx4-title">
+  <div class="wrap">
     <div class="app-head">
       <div class="lbl">Appendix 04</div>
-      <h3>Detailed structural analysis · 6 dimensions</h3>
+      <h3 id="apx4-title">Detailed structural analysis · 6 dimensions</h3>
+      <p>Expanded version of Act 1 diagnosis: dimension-by-dimension breakdown that supports the "velocity vs story" summary. For anyone who wants to validate the analysis in depth.</p>
     </div>
-    <p style="color: var(--slate); margin-bottom: 24px; max-width: 760px;">Expanded version of Act 1 diagnosis — dimension-by-dimension breakdown that supports the "velocity vs story" summary. For anyone who wants to validate the analysis in depth.</p>
     <table class="diag-table">
       <thead>
         <tr>
           <th style="width: 22%;">Dimension</th>
           <th>Apparel / Intimates</th>
-          <th>Other DTC categories<br><span style="font-weight: 400; font-size: 11px; opacity: 0.75;">supplements · healthcare · hair · beauty · fitness</span></th>
-          <th style="width: 14%;">Winner</th>
+          <th>Other DTC categories</th>
+          <th style="width: 14%; text-align:center;">Winner</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="dim">Claim specificity</td>
-          <td>"fits perfectly", "comfortable" — subjective, hard to verify.</td>
-          <td>"+30% energy", "sleep in 3 days", "FDA-approved", "stop hair fall in 8 weeks" — measurable.</td>
-          <td class="winner supplements">Other DTC</td>
+          <td>"fits perfectly", "comfortable": subjective, hard to verify.</td>
+          <td>"+30% energy", "sleep in 3 days", "FDA-approved", "stop hair fall in 8 weeks": measurable.</td>
+          <td class="winner winner--alt">Other DTC</td>
         </tr>
         <tr>
           <td class="dim">Visual payoff in 15s</td>
-          <td>Comfort is invisible — never shows on camera. Try-on only shows aesthetic.</td>
-          <td>Product + act of consuming/applying IS the visual. Hair before/after, vision improvement, weight loss.</td>
-          <td class="winner supplements">Other DTC</td>
+          <td>Comfort is invisible; never shows on camera. Try-on only shows aesthetic.</td>
+          <td>Product + act of consuming / applying IS the visual. Hair before/after, vision improvement, weight loss.</td>
+          <td class="winner winner--alt">Other DTC</td>
         </tr>
         <tr>
           <td class="dim">Authority leverage</td>
-          <td>No credible "expert" archetype — a doctor endorsing a bra feels uncanny.</td>
+          <td>No credible "expert" archetype: a doctor endorsing a bra feels uncanny.</td>
           <td>Doctors, dermatologists, optometrists, hairstylists are native authorities.</td>
-          <td class="winner supplements">Other DTC</td>
+          <td class="winner winner--alt">Other DTC</td>
         </tr>
         <tr>
           <td class="dim">Urgency / time-to-result</td>
-          <td>Result is "today" — no urgency. Buyer can wait indefinitely.</td>
+          <td>Result is "today". No urgency. Buyer can wait indefinitely.</td>
           <td>"Subscribe before next batch", "limited stock", subscription cadence built in.</td>
-          <td class="winner supplements">Other DTC</td>
+          <td class="winner winner--alt">Other DTC</td>
         </tr>
         <tr>
           <td class="dim">Hook variety</td>
           <td>Saturated: same 3 hooks (STOP!, before/after, try-on) across Shapellx, Shapermint, SPANX.</td>
           <td>Diverse: expert testimonial, podcast clip, walk-in store, viral reaction, lifestyle. 5+ active patterns.</td>
-          <td class="winner supplements">Other DTC</td>
+          <td class="winner winner--alt">Other DTC</td>
         </tr>
-        <tr class="storytelling-row">
-          <td class="dim"><strong>Storytelling fit</strong></td>
+        <tr class="row-win">
+          <td class="dim">Storytelling fit</td>
           <td><strong>Body-confidence, representation, transformation arcs travel well organically.</strong></td>
-          <td>Hard to make supplements/healthcare emotionally resonant beyond the science angle.</td>
-          <td class="winner apparel">Apparel</td>
+          <td>Hard to make supplements / healthcare emotionally resonant beyond the science angle.</td>
+          <td class="winner winner--apparel">Apparel</td>
         </tr>
       </tbody>
     </table>
-    <p style="font-size: 13px; color: var(--slate); margin-top: 16px;"><strong>Score:</strong> Other DTC categories win 5 of 6 dimensions (claim, visual, authority, urgency, hook variety). Apparel wins 1 dimension (storytelling) — and it's exactly the dimension YouTube research-mode rewards.</p>
+    <p style="font-size:13px; color:var(--slate); margin-top:16px;"><strong style="color:var(--ink);">Score:</strong> Other DTC categories win 5 of 6 dimensions (claim, visual, authority, urgency, hook variety). Apparel wins 1 dimension (storytelling), and it's exactly the dimension YouTube research-mode rewards.</p>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="top">
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+<footer class="foot" role="contentinfo">
+  <div class="wrap">
+    <div class="foot-top">
       <div>
         <h5>Trafilea · Shapermint</h5>
-        <div>YouTube's blind spot · Competitive analysis of paid Shorts</div>
-        <div style="margin-top: 8px; font-size: 11px;">May 2026 · For internal board review</div>
-        <h5 style="margin-top: 24px;">Methodology</h5>
+        <div style="margin-bottom: 8px;">YouTube's blind spot · Competitive analysis of paid Shorts</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em;">May 2026 · For internal board review</div>
+
+        <h5 style="margin-top: 28px;">Methodology</h5>
         <div class="method-grid">
-          <div class="m-item"><span>Source:</span> BigSpy AdSpy</div>
-          <div class="m-item"><span>Network:</span> YouTube Shorts</div>
-          <div class="m-item"><span>Geo · Language:</span> US · English</div>
-          <div class="m-item"><span>Format:</span> Vertical 9:16</div>
-          <div class="m-item"><span>Sort:</span> By impressions</div>
-          <div class="m-item"><span>Excluded:</span> Apps, Games, Finance, Real Estate</div>
-          <div class="m-item"><span>Sample:</span> 300 ads scraped</div>
-          <div class="m-item"><span>Watched:</span> 100 ads</div>
-          <div class="m-item"><span>Classified:</span> 240 ads</div>
-          <div class="m-item"><span>Featured:</span> 17 ads in library</div>
+          <div class="m"><span>Source</span>BigSpy AdSpy</div>
+          <div class="m"><span>Network</span>YouTube Shorts</div>
+          <div class="m"><span>Geo · Language</span>US · English</div>
+          <div class="m"><span>Format</span>Vertical 9:16</div>
+          <div class="m"><span>Sort</span>By impressions</div>
+          <div class="m"><span>Excluded</span>Apps, Games, Finance, Real Estate</div>
+          <div class="m"><span>Sample</span>300 ads scraped</div>
+          <div class="m"><span>Watched</span>100 ads</div>
+          <div class="m"><span>Classified</span>240 ads</div>
+          <div class="m"><span>Featured</span>17 ads in library</div>
         </div>
       </div>
       <div>
         <h5>Official sources</h5>
         <ul>
-          <li><a href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/video/short-form-video-advertising-tips/" target="_blank">Think with Google · Shorts-first research (2,000+ ads)</a></li>
-          <li><a href="https://business.google.com/in/think/search-and-video/creator-marketing-social-strategy/" target="_blank">Think with Google · Sephora Holiday 2025 case</a></li>
-          <li><a href="https://support.google.com/google-ads/answer/16041697" target="_blank">Google Ads Help · Shorts ads specs</a></li>
-          <li><a href="https://www.darkroomagency.com/observatory/youtube-shorts-ads-guide-setup-specs-and-2025-best-practices" target="_blank">Darkroom Agency · Shorts guide</a></li>
-          <li><a href="https://motionapp.com/blog/best-dtc-meta-ad-hooks-2025" target="_blank">Motion · DTC creative benchmarks</a></li>
-          <li>Triple Whale, Northbeam, Common Thread Collective · 2024-25 DTC benchmarks</li>
+          <li><a href="https://www.thinkwithgoogle.com/intl/en-emea/marketing-strategies/video/short-form-video-advertising-tips/" target="_blank" rel="noopener">Think with Google · Shorts-first research (2,000+ ads)</a></li>
+          <li><a href="https://business.google.com/in/think/search-and-video/creator-marketing-social-strategy/" target="_blank" rel="noopener">Think with Google · Sephora Holiday 2025 case</a></li>
+          <li><a href="https://support.google.com/google-ads/answer/16041697" target="_blank" rel="noopener">Google Ads Help · Shorts ads specs</a></li>
+          <li><a href="https://www.darkroomagency.com/observatory/youtube-shorts-ads-guide-setup-specs-and-2025-best-practices" target="_blank" rel="noopener">Darkroom Agency · Shorts guide</a></li>
+          <li><a href="https://motionapp.com/blog/best-dtc-meta-ad-hooks-2025" target="_blank" rel="noopener">Motion · DTC creative benchmarks</a></li>
+          <li>Triple Whale, Northbeam, Common Thread Collective · 2024–25 DTC benchmarks</li>
           <li>Internal Trafilea analysis · 240 ads · page 16 framework</li>
         </ul>
       </div>
       <div>
         <h5>Sample</h5>
         <ul>
-          <li>BigSpy AdSpy — primary scrape</li>
+          <li>BigSpy AdSpy · primary scrape</li>
           <li>YouTube Shorts · English · US · 9:16</li>
           <li>300 scraped · 100 visual · 240 classified</li>
           <li>17 curated examples</li>
         </ul>
       </div>
     </div>
-    <div class="bottom">
+    <div class="foot-bottom">
       <div>© 2026 Trafilea · Internal use</div>
       <div>YouTube's blind spot</div>
     </div>
@@ -1414,50 +2332,84 @@ footer .bottom {
 </footer>
 
 <script>
-// Filter ads
-document.querySelectorAll('.filter-pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    const f = pill.dataset.filter;
-    document.querySelectorAll('.ad-card').forEach(card => {
-      card.style.display = (f === 'all' || card.dataset.pattern === f) ? '' : 'none';
+(function () {
+  'use strict';
+
+  /* ---- Filter ads ---- */
+  var pills = document.querySelectorAll('.filter-pill');
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pills.forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+      pill.setAttribute('aria-pressed', 'true');
+      var f = pill.dataset.filter;
+      document.querySelectorAll('.ad-card').forEach(function (card) {
+        card.style.display = (f === 'all' || card.dataset.pattern === f) ? '' : 'none';
+      });
     });
   });
-});
 
-// Click ad-card to play
-document.querySelectorAll('.ad-card').forEach(card => {
-  const wrap = card.querySelector('.video-wrap');
-  const vid = card.querySelector('video');
-  if (!wrap || !vid) return;
-  wrap.addEventListener('click', () => {
-    if (card.classList.contains('playing')) {
-      if (vid.paused) { vid.play(); } else { vid.pause(); }
-    } else {
-      document.querySelectorAll('.ad-card.playing video').forEach(v => v.pause());
-      document.querySelectorAll('.ad-card.playing').forEach(c => c.classList.remove('playing'));
-      vid.muted = false; vid.controls = true;
-      card.classList.add('playing'); vid.play();
-    }
-  });
-});
-
-// Click organic-card video to play
-document.querySelectorAll('.organic-card.video-card .video-wrap').forEach(wrap => {
-  const vid = wrap.querySelector('video');
-  if (!vid) return;
-  wrap.addEventListener('click', () => {
+  /* ---- Lazy-load videos on demand ---- */
+  function playVideo(wrap, container) {
+    var vid = wrap.querySelector('video');
+    if (!vid) return;
+    if (vid.preload === 'none') vid.preload = 'metadata';
     if (wrap.classList.contains('playing')) {
       if (vid.paused) { vid.play(); } else { vid.pause(); }
     } else {
-      document.querySelectorAll('.organic-card .video-wrap.playing video').forEach(v => v.pause());
-      document.querySelectorAll('.organic-card .video-wrap.playing').forEach(w => w.classList.remove('playing'));
-      vid.muted = false; vid.controls = true;
-      wrap.classList.add('playing'); vid.play();
+      document.querySelectorAll('.video-wrap.playing video').forEach(function (v) { v.pause(); });
+      document.querySelectorAll('.video-wrap.playing').forEach(function (w) { w.classList.remove('playing'); });
+      if (container && container.classList) {
+        document.querySelectorAll('.ad-card.playing').forEach(function (c) { c.classList.remove('playing'); });
+      }
+      vid.muted = false;
+      vid.controls = true;
+      wrap.classList.add('playing');
+      if (container && container.classList && container.classList.contains('ad-card')) {
+        container.classList.add('playing');
+      }
+      var pp = vid.play();
+      if (pp && typeof pp.catch === 'function') pp.catch(function () { /* autoplay refused */ });
     }
+  }
+
+  document.querySelectorAll('.video-wrap').forEach(function (wrap) {
+    var card = wrap.closest('.ad-card') || wrap.closest('.proof');
+    wrap.addEventListener('click', function () { playVideo(wrap, card); });
+    wrap.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        playVideo(wrap, card);
+      }
+    });
   });
-});
+
+  /* ---- Mobile nav drawer ---- */
+  var toggle = document.querySelector('.nav-toggle');
+  var drawer = document.querySelector('.nav-drawer');
+  var closeBtn = document.querySelector('.nav-drawer-close');
+
+  function openDrawer() {
+    drawer.setAttribute('data-open', 'true');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.setAttribute('data-open', 'false');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (toggle && drawer && closeBtn) {
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeDrawer);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.getAttribute('data-open') === 'true') closeDrawer();
+    });
+  }
+})();
 </script>
 </body>
 </html>
